@@ -1,0 +1,66 @@
+@import "constants";
+
+.header {
+  position: relative;
+  top: 60px;
+
+  .wrapper {
+    display: flex;
+
+    .header__logo {
+      font-family: Georgia, serif;
+      display: inline-block;
+      cursor: pointer;
+
+      .logo__link {
+
+        .logo__title {
+          font-size: 32px;
+          letter-spacing: 0.06em;
+          color: $color-primary;
+          margin-bottom: 10px;
+        }
+
+        .logo__subtitle {
+          font-family: Arial, serif;
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          text-align: center;
+          color: $color-light-xl;
+          padding-right: 1px;
+        }
+      }
+    }
+
+    .header__nav-menu {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      color: $color-light-s;
+
+      ul.menu {
+        margin-top: -6px;
+
+        li.menu__item {
+          display: inline;
+          padding-left: 32px;
+
+          a.menu__link {
+            color: $color-dark-s;
+            padding: 4px 0;
+
+            &:hover {
+              color: $color-light-s;
+            }
+
+            &-active {
+              color: $color-light-s;
+              border-bottom: 3px solid $color-primary;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
