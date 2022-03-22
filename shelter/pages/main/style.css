@@ -13,6 +13,7 @@
 }
 .header .wrapper .header__logo .logo__link .logo__title {
   font-size: 32px;
+  font-weight: 400;
   letter-spacing: 0.06em;
   color: #F1CDB3;
   margin-bottom: 10px;
