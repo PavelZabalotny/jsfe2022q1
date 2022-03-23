@@ -56,7 +56,7 @@
   position: relative;
   top: -60px;
   padding-top: 180px;
-  background: url(../../assets/images/start-screen-gradient-background.png) center center no-repeat, url(../../assets/images/start-screen-background.jpg) center center no-repeat;
+  background: url(../../assets/images/start-screen-gradient-background.png) center center no-repeat, url(../../assets/images/start-screen-background.png) center center no-repeat;
 }
 .start_screen .start_screen__container {
   display: flex;
