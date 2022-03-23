@@ -1,5 +1,6 @@
 @import "../../assets/css/normalize.css";
 @import "header";
+@import "start-screen";
 
 *,
 *::before,
@@ -32,11 +33,15 @@ dd {
 
 a {
   text-decoration: none;
-  transition: 0.2s;
+  transition: $transition-2;
 
   &:hover {
     //color: lighten(blue, 30%);
   }
+}
+
+button {
+  transition: $transition-2;
 }
 
 img {
@@ -57,7 +62,7 @@ body {
   font-family: Arial, serif;
   font-size: 15px;
   position: relative;
-  background: #2c0606;
+  //background: #2c0606;
 }
 
 .wrapper {
