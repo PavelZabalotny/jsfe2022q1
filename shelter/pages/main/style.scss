@@ -62,11 +62,17 @@ body {
   font-family: Arial, serif;
   font-size: 15px;
   position: relative;
+  overflow-x: hidden;
   //background: #2c0606;
 }
 
 .wrapper {
-  width: 1200px;
+  max-width: $wrapper-size;
   margin: 0 auto;
+  padding: 0 40px;
   //outline: 1px solid red;
+
+  @media (max-width: 768px) {
+    padding: 0 30px;
+  }
 }

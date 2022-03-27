@@ -4,6 +4,10 @@
   position: relative;
   top: 60px;
   z-index: 9;
+  
+  @media (max-width: 768px) {
+    top: 30px
+  }
 
   .wrapper {
     display: flex;
