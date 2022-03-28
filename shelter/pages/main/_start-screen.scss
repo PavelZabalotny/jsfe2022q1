@@ -64,22 +64,8 @@
           }
 
           .content__button__link {
-            padding: 15px 45px;
-            display: inline-block;
-            background: $color-primary;
-            border-radius: 100px;
-            font-family: 'Georgia', serif;
-            font-weight: 400;
-            font-size: 17px;
-            line-height: 130%;
-            letter-spacing: 0.06em;
-            border: 0;
-            color: $color-button-text;
-            cursor: pointer;
-
-            &:hover {
-              background-color: $color-primary-hover;
-            }
+            @extend .button;
+            @extend .button-primary;
           }
         }
       }
