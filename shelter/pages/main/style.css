@@ -111,11 +111,16 @@
   font-size: 15px;
   line-height: 155%;
   color: #CDCDCD;
-  margin-bottom: 41px;
+  margin-bottom: 43px;
 }
-.start_screen .wrapper .start_screen__container .start_screen__content .content__button {
+@media (max-width: 768px) {
+  .start_screen .wrapper .start_screen__container .start_screen__content .content__button {
+    text-align: center;
+  }
+}
+.start_screen .wrapper .start_screen__container .start_screen__content .content__button .content__button__link {
   padding: 15px 45px;
-  display: block;
+  display: inline-block;
   background: #F1CDB3;
   border-radius: 100px;
   font-family: "Georgia", serif;
@@ -127,12 +132,7 @@
   color: #292929;
   cursor: pointer;
 }
-@media (max-width: 768px) {
-  .start_screen .wrapper .start_screen__container .start_screen__content .content__button {
-    margin: 0 auto;
-  }
-}
-.start_screen .wrapper .start_screen__container .start_screen__content .content__button:hover {
+.start_screen .wrapper .start_screen__container .start_screen__content .content__button .content__button__link:hover {
   background-color: #FDDCC4;
 }
 .start_screen .wrapper .start_screen__container .start_screen_image {
@@ -143,8 +143,57 @@
   .start_screen .wrapper .start_screen__container .start_screen_image {
     flex-basis: unset;
     max-width: 569px;
-    margin: 101px 0 0 138px;
+    margin: 100px 0 0 138px;
   }
+}
+
+.about {
+  padding-top: 23px;
+  padding-bottom: 100px;
+  background-color: #FFFFFF;
+}
+.about .wrapper .about__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 120px;
+}
+@media (max-width: 768px) {
+  .about .wrapper .about__content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+.about .wrapper .about__content .content__image img {
+  width: 300px;
+  height: 408px;
+}
+.about .wrapper .about__content .content__container {
+  width: 430px;
+  height: 380px;
+  padding-top: 13px;
+}
+@media (max-width: 768px) {
+  .about .wrapper .about__content .content__container {
+    padding-top: 0;
+    margin-top: -3px;
+    margin-bottom: 80px;
+  }
+}
+.about .wrapper .about__content .content__container .content__heading {
+  font-family: "Georgia", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+.about .wrapper .about__content .content__container .content__block {
+  margin-top: 24px;
+  font-size: 15px;
+  line-height: 160%;
+  color: #4C4C4C;
 }
 
 *,
