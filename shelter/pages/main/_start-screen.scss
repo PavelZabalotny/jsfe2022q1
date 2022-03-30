@@ -4,9 +4,8 @@
   position: relative;
   top: -60px;
   padding-top: 180px;
-  //background: url(../../assets/images/start-screen-gradient-background.png) top left/contain no-repeat;
-  background-color: #211F20;
-  background-image: url(../../assets/images/start-screen-gradient-background-effect.png),
+  //background-color: #211F20;
+  background: url(../../assets/images/start-screen-gradient-background-effect.png),
   radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
 
   @media (max-width: 768px) {

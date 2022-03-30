@@ -1,0 +1,59 @@
+@import "constants";
+
+.footer {
+  background: url(../../assets/images/start-screen-gradient-background-effect.png),
+  radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
+  padding-top: 40px;
+
+.wrapper {
+  .footer__content {
+    display: flex;
+    column-gap: 160px;
+
+    .footer__block {
+      height: 234px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-top: 16px;
+
+      .block__title {
+        width: 279px;
+        color: $color-light-xl;
+      }
+
+      .block__items {
+        height: 103px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .block__item {
+          display: flex;
+          align-items: center;
+          column-gap: 20px;
+
+          .block__icon {
+            svg {
+              fill: $color-primary;
+            }
+          }
+          .block__text {
+            color: $color-primary;
+            a {
+              color: inherit;
+
+              &:hover {
+                color: darken($color-primary, 30%);
+              }
+            }
+          }
+        }
+      }
+    }
+    .footer__image {
+      margin-left: 6px;
+    }
+  }
+}
+}
