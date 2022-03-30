@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 ul[class],
 ol[class] {
   padding: 0;
@@ -52,7 +56,6 @@ select {
 
 body {
   min-height: 100vh;
-  scroll-behavior: smooth;
   font-family: Arial, serif;
   font-size: 15px;
   position: relative;
@@ -76,6 +79,15 @@ h3 {
   font-weight: 400;
   font-size: 35px;
   line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+
+h4 {
+  font-family: "Georgia", serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
   letter-spacing: 0.06em;
   color: #545454;
 }
@@ -124,6 +136,12 @@ h3 {
 .button-primary, .start_screen .wrapper .start_screen__container .start_screen__content .content__button .content__button__link {
   border: 0;
   background-color: #F1CDB3;
+}
+
+.flex-column-center, .help .wrapper .help__content, .pets .wrapper .pets__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header {
@@ -301,13 +319,8 @@ h3 {
   padding: 80px 0 100px 0;
   background-color: #F6F6F6;
 }
-.pets .wrapper .pets__content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 .pets .wrapper .pets__content .content__heading {
-  width: 400px;
+  max-width: 400px;
   text-align: center;
   margin-bottom: 58px;
 }
@@ -347,6 +360,47 @@ h3 {
 }
 .pets .wrapper .pets__content .pets__slider .slider__content .slider__card .card__button {
   margin-bottom: 30px;
+}
+
+.help {
+  padding: 80px 0 100px 0;
+  background-color: #FFFFFF;
+}
+.help .wrapper .help__content .content__heading {
+  max-width: 400px;
+  text-align: center;
+  margin-bottom: 58px;
+}
+.help .wrapper .help__content .help__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 120px;
+}
+@media (max-width: 768px) {
+  .help .wrapper .help__content .help__list {
+    column-gap: 60px;
+  }
+}
+.help .wrapper .help__content .help__list .help__item {
+  text-align: center;
+  margin-bottom: 55px;
+  cursor: pointer;
+  fill: #F1CDB3;
+  transition: 0.2s;
+}
+.help .wrapper .help__content .help__list .help__item:hover {
+  fill: #d97832;
+}
+@media (max-width: 768px) {
+  .help .wrapper .help__content .help__list .help__item {
+    width: 170px;
+  }
+}
+.help .wrapper .help__content .help__list .help__item .help__icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 27px;
 }
 
 /*# sourceMappingURL=style.css.map */

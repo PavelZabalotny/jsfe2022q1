@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 ul[class],
 ol[class] {
   padding: 0;
@@ -57,7 +61,6 @@ select {
 
 body {
   min-height: 100vh;
-  scroll-behavior: smooth;
   font-family: Arial, serif;
   font-size: 15px;
   position: relative;
@@ -81,6 +84,15 @@ h3 {
   font-weight: 400;
   font-size: 35px;
   line-height: 130%;
+  letter-spacing: 0.06em;
+  color: $color-dark-l;
+}
+
+h4 {
+  font-family: 'Georgia', serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
   letter-spacing: 0.06em;
   color: $color-dark-l;
 }
@@ -131,4 +143,10 @@ h3 {
 .button-primary {
   border: 0;
   background-color: $color-primary;
+}
+
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

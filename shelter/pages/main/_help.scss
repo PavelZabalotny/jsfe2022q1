@@ -1,0 +1,51 @@
+@import "constants";
+
+.help {
+  padding: 80px 0 100px 0;
+  background-color: $color-light-xl;
+
+  .wrapper {
+    .help__content {
+      @extend .flex-column-center;
+
+      .content__heading {
+        max-width: 400px;
+        text-align: center;
+        margin-bottom: 58px;
+      }
+
+      .help__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        column-gap: 120px;
+
+        @media (max-width: 768px) {
+          column-gap: 60px;
+        }
+
+        .help__item {
+          text-align: center;
+          margin-bottom: 55px;
+          cursor: pointer;
+          fill: $color-primary;
+          transition: 0.2s;
+
+          &:hover {
+            fill: darken($color-primary, 30%);
+          }
+          
+          @media (max-width: 768px) {
+            width: 170px;
+          }
+
+          .help__icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 27px;
+          }
+        }
+      }
+    }
+  }
+}
