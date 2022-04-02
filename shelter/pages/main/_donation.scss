@@ -12,7 +12,7 @@
       align-items: center;
       column-gap: 30px;
 
-      @media (max-width: 768px) {
+      @media (max-width: $brake-point-1) {
         flex-direction: column-reverse;
         row-gap: 60px;
       }

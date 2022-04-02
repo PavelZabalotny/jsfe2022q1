@@ -5,10 +5,20 @@
   radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
   padding-top: 40px;
 
+  @media (max-width: $brake-point-1) {
+    padding-top: 13px;
+  }
+
 .wrapper {
   .footer__content {
     display: flex;
+    flex-wrap: wrap;
     column-gap: 160px;
+
+    @media (max-width: 1279px) {
+      column-gap: 60px;
+      justify-content: center;
+    }
 
     .footer__block {
       height: 234px;
@@ -16,6 +26,12 @@
       flex-direction: column;
       justify-content: space-between;
       margin-top: 16px;
+
+      @media (max-width: $brake-point-1) {
+        &.fb__width--302 {
+          width: 302px;
+        }
+      }
 
       .block__title {
         width: 279px;
@@ -53,6 +69,10 @@
     }
     .footer__image {
       margin-left: 6px;
+
+      @media (max-width: 1079Px) {
+        margin-top: 64px;
+      }
     }
   }
 }

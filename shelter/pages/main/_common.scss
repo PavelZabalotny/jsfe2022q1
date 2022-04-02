@@ -111,6 +111,7 @@ h5 {
 .arrow {
   width: 52px;
   height: 52px;
+  flex-shrink: 0;
   border: 2px solid $color-primary;
   border-radius: 100px;
   cursor: pointer;
