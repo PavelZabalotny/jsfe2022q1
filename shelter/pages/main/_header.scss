@@ -6,11 +6,23 @@
   z-index: 9;
   
   @media (max-width: $brake-point-1) {
-    top: 30px
+    top: 30px;
   }
 
   .wrapper {
     display: flex;
+
+    .burger {
+      display: none;
+      z-index: 999;
+
+      @media (max-width: $brake-point-2) {
+        display: block;
+        position: absolute;
+        top: 19px;
+        right: 53px;
+      }
+    }
 
     .header__logo {
       font-family: Georgia, serif;
@@ -43,6 +55,10 @@
       display: flex;
       align-items: center;
       color: $color-light-s;
+
+      @media (max-width: $brake-point-2) {
+        display: none;
+      }
 
       ul.menu {
         margin-top: -6px;

@@ -4,6 +4,10 @@
   padding: 80px 0 100px 0;
   background-color: $color-light-l;
 
+  @media (max-width: $brake-point-2) {
+    padding: 42px 0 42px 0;
+  }
+
   .wrapper {
     .pets__content {
       @extend .flex-column-center;
@@ -20,10 +24,21 @@
         display: flex;
         align-items: center;
         margin-bottom: 60px;
+        position: relative;
+
+        @media (max-width: $brake-point-2) {
+          justify-content: center;
+          margin-bottom: 112px;
+        }
 
         .slider__arrow {
           @extend .arrow;
           background: url(../../assets/images/Arrow.png) center center no-repeat;
+
+          @media (max-width: $brake-point-2) {
+            position: absolute;
+            bottom: -70px;
+          }
         }
 
         .slider__content {
@@ -45,6 +60,15 @@
 
             @media (max-width: 1090px) {
               &:last-child {
+                display: none;
+              }
+            }
+
+            @media (max-width: $brake-point-2) {
+              margin-top: -17px;
+              row-gap: 29px;
+
+              &:not(:first-child) {
                 display: none;
               }
             }
