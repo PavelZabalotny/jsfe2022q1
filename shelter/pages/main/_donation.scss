@@ -54,21 +54,24 @@
           }
         }
 
-        .content__credit-card {
-          width: fit-content;
-          display: flex;
-          align-items: center;
-          padding: 10px 15px;
-          background: $color-primary;
-          border-radius: 9px;
-          column-gap: 15px;
+        a {
+          cursor: pointer;
 
-          .credit-card__image {
+          .content__credit-card {
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background: $color-primary;
+            border-radius: 9px;
+            column-gap: 15px;
+
+            .credit-card__image {
+            }
+
+            .credit-card__number {
+            }
           }
-
-          .credit-card__tel {
-          }
-
         }
 
         .content__info {

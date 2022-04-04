@@ -56,7 +56,20 @@
             flex-direction: column;
             align-items: center;
             row-gap: 30px;
-            background-color: $color-light-xl;
+            background-color: $color-light-s;
+            cursor: pointer;
+            border-radius: 9px;
+
+            &:hover {
+              background-color: $color-light-xl;
+              box-shadow: 0 2px 35px 14px rgba(13, 13, 13, 0.04);
+
+              .card__button {
+                background-color: $color-primary-hover;
+              }
+            }
+
+
 
             @media (max-width: 1090px) {
               &:last-child {
@@ -76,6 +89,7 @@
             .card__image {
               width: 270px;
               height: 270px;
+              border-radius: 9px 9px 0 0;
             }
 
             .card__title {

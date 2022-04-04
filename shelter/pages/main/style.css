@@ -202,6 +202,7 @@ ul.h-110 {
 .header .wrapper .burger {
   display: none;
   z-index: 999;
+  cursor: pointer;
 }
 @media (max-width: 743px) {
   .header .wrapper .burger {
@@ -265,7 +266,7 @@ ul.h-110 {
   position: relative;
   top: -60px;
   padding-top: 180px;
-  background: url(../../assets/images/start-screen-gradient-background-effect.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
+  background: url(../../assets/images/noise_transparent_2x.png) repeat, radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
 }
 @media (max-width: 870px) {
   .start_screen {
@@ -480,7 +481,16 @@ ul.h-110 {
   flex-direction: column;
   align-items: center;
   row-gap: 30px;
+  background-color: #FAFAFA;
+  cursor: pointer;
+  border-radius: 9px;
+}
+.pets .wrapper .pets__content .pets__slider .slider__content .slider__card:hover {
   background-color: #FFFFFF;
+  box-shadow: 0 2px 35px 14px rgba(13, 13, 13, 0.04);
+}
+.pets .wrapper .pets__content .pets__slider .slider__content .slider__card:hover .card__button {
+  background-color: #FDDCC4;
 }
 @media (max-width: 1090px) {
   .pets .wrapper .pets__content .pets__slider .slider__content .slider__card:last-child {
@@ -499,6 +509,7 @@ ul.h-110 {
 .pets .wrapper .pets__content .pets__slider .slider__content .slider__card .card__image {
   width: 270px;
   height: 270px;
+  border-radius: 9px 9px 0 0;
 }
 .pets .wrapper .pets__content .pets__slider .slider__content .slider__card .card__title {
   font-family: "Georgia", serif;
@@ -639,7 +650,10 @@ ul.h-110 {
     text-align: center;
   }
 }
-.donation .wrapper .donation__container .donation__content .content__credit-card {
+.donation .wrapper .donation__container .donation__content a {
+  cursor: pointer;
+}
+.donation .wrapper .donation__container .donation__content a .content__credit-card {
   width: fit-content;
   display: flex;
   align-items: center;
@@ -665,7 +679,7 @@ ul.h-110 {
 }
 
 .footer {
-  background: url(../../assets/images/start-screen-gradient-background-effect.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
+  background: url(../../assets/images/noise_transparent_2x.png) repeat, radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
   padding-top: 40px;
 }
 @media (max-width: 870px) {
