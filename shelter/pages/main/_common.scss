@@ -1,0 +1,189 @@
+@import "constants";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+  list-style: none;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    //color: lighten(blue, 30%);
+  }
+}
+
+button,
+a,
+.arrow {
+  transition: $transition-2;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, serif;
+  font-size: 15px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.wrapper {
+  max-width: $wrapper-size;
+  margin: 0 auto;
+  padding: 0 40px;
+  //outline: 1px solid red;
+
+  @media (max-width: $brake-point-1) {
+    padding: 0 30px;
+  }
+
+  @media (max-width: $brake-point-2) {
+    padding: 0 10px;
+  }
+}
+
+h3 {
+  font-family: 'Georgia', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: $color-dark-l;
+
+    @media (max-width: $brake-point-2) {
+      font-size: 25px;
+      text-align: center;
+  }
+}
+
+h4 {
+  font-family: 'Georgia', serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  letter-spacing: 0.06em;
+  color: $color-dark-l;
+
+  @media (max-width: $brake-point-2) {
+    font-size: 15px;
+  }
+}
+
+h5 {
+  font-family: 'Georgia', serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: $color-dark-l;
+}
+
+.arrow {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border: 2px solid $color-primary;
+  border-radius: 100px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-primary
+  }
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.arrow__pos-left {
+  margin-right: auto;
+
+  @media (max-width: $brake-point-2) {
+    left: 58px;
+  }
+}
+
+.arrow__pos-right {
+  margin-left: auto;
+
+  @media (max-width: $brake-point-2) {
+    right: 58px;
+  }
+}
+
+.button {
+  padding: 15px 45px;
+  display: inline-block;
+  background-color: $color-light-xl;
+  border-radius: 100px;
+  font-family: 'Georgia', serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: $color-dark-3xl;
+  cursor: pointer;
+  border: 2px solid $color-primary;
+
+  &:hover {
+    background-color: $color-primary-hover;
+  }
+}
+
+.button-primary {
+  border: 0;
+  background-color: $color-primary;
+}
+
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ul.h-110 {
+  min-height: 110px;
+}

@@ -1,0 +1,89 @@
+@import "constants";
+
+.header {
+  position: relative;
+  top: 60px;
+  z-index: 9;
+  
+  @media (max-width: $brake-point-1) {
+    top: 30px;
+  }
+
+  .wrapper {
+    display: flex;
+
+    .burger {
+      display: none;
+      z-index: 999;
+      cursor: pointer;
+
+      @media (max-width: $brake-point-2) {
+        display: block;
+        position: absolute;
+        top: 19px;
+        right: 53px;
+      }
+    }
+
+    .header__logo {
+      font-family: Georgia, serif;
+      display: inline-block;
+      cursor: pointer;
+
+      .logo__link {
+
+        .logo__title {
+          font-size: 32px;
+          font-weight: 400;
+          letter-spacing: 0.06em;
+          color: $color-primary;
+          margin-bottom: 10px;
+        }
+
+        .logo__subtitle {
+          font-family: Arial, serif;
+          font-size: 13px;
+          letter-spacing: 0.1em;
+          text-align: center;
+          color: $color-light-xl;
+          padding-right: 1px;
+        }
+      }
+    }
+
+    .header__nav-menu {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      color: $color-light-s;
+
+      @media (max-width: $brake-point-2) {
+        display: none;
+      }
+
+      ul.menu {
+        margin-top: -6px;
+
+        li.menu__item {
+          display: inline;
+          padding-left: 31.5px;
+
+          a.menu__link {
+            color: $color-dark-s;
+            padding: 4px 0;
+
+            &:hover {
+              color: $color-light-s;
+            }
+
+            &-active {
+              color: $color-light-s;
+              border-bottom: 3px solid $color-primary;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
