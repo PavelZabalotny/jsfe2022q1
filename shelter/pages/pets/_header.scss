@@ -1,0 +1,50 @@
+@import "../main/constants";
+@import "../main/header";
+
+.header {
+  position: sticky;
+  top: 0;
+  padding: 30px 0;
+  background-color: $color-light-xl;
+
+  .wrapper {
+    .burger {
+      @media (max-width: $brake-point-2) {
+        top: 49px;
+        svg {
+          fill: black;
+        }
+      }
+    }
+
+    .header__logo {
+      .logo__link {
+        .logo__title {
+          color: $color-dark-l;
+        }
+        .logo__subtitle {
+          color: $color-dark-3xl;
+        }
+      }
+    }
+
+    .header__nav-menu {
+
+      ul.menu {
+        li.menu__item {
+          a.menu__link {
+            color: $color-dark-l;
+
+            &:hover {
+              color: $color-dark-3xl;
+            }
+
+            &-active {
+              color: $color-dark-l;
+            }
+          }
+        }
+      }
+    }
+  }
+}

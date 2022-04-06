@@ -126,9 +126,29 @@ h5 {
   border: 2px solid #F1CDB3;
   border-radius: 100px;
   cursor: pointer;
+  color: #292929;
+  user-select: none;
 }
-.arrow:hover, .pets .wrapper .pets__content .pets__slider .slider__arrow:hover {
+.arrow--disabled {
+  border: 2px solid #CDCDCD;
+  color: #CDCDCD;
+  pointer-events: none;
+}
+.arrow--disabled:hover {
+  background-color: transparent;
+}
+.arrow:hover, .pets .wrapper .pets__content .pets__slider .slider__arrow:hover, .arrow--active {
   background-color: #F1CDB3;
+}
+.arrow--active {
+  pointer-events: none;
+}
+.arrow h4, .pets .wrapper .pets__content .pets__slider .slider__arrow h4 {
+  color: inherit;
+}
+
+.arrow_bg {
+  background: url(../../assets/images/Arrow.png) center center no-repeat;
 }
 
 .rotate-y-180 {
@@ -455,9 +475,6 @@ ul.h-110 {
     justify-content: center;
     margin-bottom: 112px;
   }
-}
-.pets .wrapper .pets__content .pets__slider .slider__arrow {
-  background: url(../../assets/images/Arrow.png) center center no-repeat;
 }
 @media (max-width: 743px) {
   .pets .wrapper .pets__content .pets__slider .slider__arrow {

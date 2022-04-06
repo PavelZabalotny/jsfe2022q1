@@ -1,0 +1,100 @@
+@import "../main/constants";
+@import "../main/pets";
+
+.pets {
+  padding-bottom: 41px;
+
+  @media (max-width: $brake-point-1) {
+    padding-bottom: 18px;
+  }
+  @media (max-width: $brake-point-2) {
+    padding-bottom: 44px;
+  }
+
+  .wrapper {
+    .pets__content {
+      .content__heading {
+        @media (max-width: $brake-point-1) {
+          margin-bottom: 27px;
+        }
+
+        @media (max-width: $brake-point-2) {
+          margin-bottom: 56px;
+        }
+      }
+
+      .pets__slider {
+        max-height: unset;
+        flex-direction: column;
+
+        @media (max-width: $brake-point-2) {
+          margin-bottom: 0;
+        }
+
+        .slider__arrows {
+          display: flex;
+          column-gap: 20px;
+
+          @media (max-width: $brake-point-2) {
+            column-gap: 10px;
+          }
+
+          .slider__arrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @media (max-width: $brake-point-2) {
+              position: static;
+              h4 {
+                font-size: 20px;
+              }
+            }
+          }
+
+          .arrow--disabled {
+            @extend .arrow--disabled;
+          }
+        }
+
+        .slider__content {
+          column-gap: 40px;
+          row-gap: 30px;
+          margin-bottom: 59px;
+          justify-content: center;
+
+          @media (max-width: 1200px) {
+            column-gap: 40px;
+          }
+
+          @media (max-width: $brake-point-1) {
+            margin-bottom: 40px;
+          }
+
+          @media (max-width: $brake-point-1) {
+            row-gap: 47px;
+          }
+
+          .slider__card {
+            row-gap: 28px;
+
+            @media (max-width: 1090px) {
+              max-height: 435px;
+              row-gap: 29px;
+
+              &:nth-last-child(-n+2) {
+                display: none;
+              }
+            }
+
+            @media (max-width: $brake-point-2) {
+              &:nth-child(-n+3) {
+                display: flex;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

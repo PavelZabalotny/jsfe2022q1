@@ -33,7 +33,6 @@
 
         .slider__arrow {
           @extend .arrow;
-          background: url(../../assets/images/Arrow.png) center center no-repeat;
 
           @media (max-width: $brake-point-2) {
             position: absolute;
