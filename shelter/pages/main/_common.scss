@@ -128,10 +128,35 @@ h5 {
   border: 2px solid $color-primary;
   border-radius: 100px;
   cursor: pointer;
+  color: $color-dark-3xl;
+  user-select: none;
 
-  &:hover {
-    background-color: $color-primary
+  &--disabled {
+    border: 2px solid $color-dark-s;
+    color: $color-dark-s;
+    pointer-events: none;
+
+    &:hover {
+      background-color: transparent;
+    }
   }
+
+  &:hover,
+  &--active {
+    background-color: $color-primary;
+  }
+
+  &--active {
+    pointer-events: none;
+  }
+
+  h4 {
+    color: inherit;
+  }
+}
+
+.arrow_bg {
+  background: url(../../assets/images/Arrow.png) center center no-repeat;
 }
 
 .rotate-y-180 {
