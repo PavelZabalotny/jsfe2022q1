@@ -1,0 +1,15 @@
+@import "constants";
+
+.burger {
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  transition: $transition-2;
+  cursor: pointer;
+
+  @media (max-width: $brake-point-2) {
+    display: block;
+    top: 49px;
+    right: 53px;
+  }
+}

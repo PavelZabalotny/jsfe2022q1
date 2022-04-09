@@ -3,52 +3,49 @@
 .header {
   position: relative;
   top: 60px;
-  z-index: 9;
+  z-index: 999;
+  transition: $transition-2;
+
+  &__shadow {
+    display: none;
+  }
   
   @media (max-width: $brake-point-1) {
     top: 30px;
   }
 
+  @media (max-width: $brake-point-2) {
+    width: 320px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -320px;
+    padding-top: 30px;
+    background-color: $color-dark-3xl;
+
+    &__shadow {
+      width: 100vw;
+      height: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      right: -100vw;
+      z-index: -1;
+      background-color: rgba(41, 41, 41, 0.6);
+    }
+  }
+
   .wrapper {
     display: flex;
 
-    .burger {
-      display: none;
-      z-index: 999;
-      cursor: pointer;
-
-      @media (max-width: $brake-point-2) {
-        display: block;
-        position: absolute;
-        top: 19px;
-        right: 53px;
-      }
+    @media (max-width: $brake-point-2) {
+      display: block;
     }
 
     .header__logo {
       font-family: Georgia, serif;
       display: inline-block;
       cursor: pointer;
-
-      .logo__link {
-
-        .logo__title {
-          font-size: 32px;
-          font-weight: 400;
-          letter-spacing: 0.06em;
-          color: $color-primary;
-          margin-bottom: 10px;
-        }
-
-        .logo__subtitle {
-          font-family: Arial, serif;
-          font-size: 13px;
-          letter-spacing: 0.1em;
-          text-align: center;
-          color: $color-light-xl;
-          padding-right: 1px;
-        }
-      }
     }
 
     .header__nav-menu {
@@ -58,19 +55,37 @@
       color: $color-light-s;
 
       @media (max-width: $brake-point-2) {
-        display: none;
+        justify-content: center;
       }
 
       ul.menu {
         margin-top: -6px;
 
+        @media (max-width: $brake-point-2) {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          row-gap: 41px;
+          margin-top: 219px;
+        }
+
         li.menu__item {
           display: inline;
           padding-left: 31.5px;
 
+          @media (max-width: $brake-point-2) {
+            font-size: 32px;
+            line-height: 160%;
+            margin-left: -31px;
+          }
+
           a.menu__link {
             color: $color-dark-s;
             padding: 4px 0;
+
+            @media (max-width: $brake-point-2) {
+              padding: 7px 0;
+            }
 
             &:hover {
               color: $color-light-s;

@@ -1,5 +1,7 @@
 @import "../../assets/css/normalize.css";
-@import "common";
+
+@import "logo";
+@import "burger";
 @import "header";
 @import "start-screen";
 @import "about";
@@ -7,3 +9,4 @@
 @import "help";
 @import "donation";
 @import "footer";
+@import "common";
