@@ -1,4 +1,4 @@
-import Burger from "./burger.js"
+import Burger from "../../assets/js/burger.js"
 
 const domElements = {
 	burger: document.querySelector('.burger'),

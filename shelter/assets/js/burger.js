@@ -10,14 +10,16 @@ export default class {
 	}
 
 	burgerClick() {
-		this.logo.classList.toggle('hidden')
-		this.header.classList.toggle('right-0')
-		this.headerShadow.classList.toggle('visible')
-		this.headerShadow.classList.toggle('right-0')
-		this.burger.classList.toggle('burger--active')
-		this.burger.classList.toggle('position-fixed')
-		this.burgerHeader?.classList.toggle('hidden')
-		this.pets?.classList.toggle('pt-160')
+		if(window.innerWidth < 744) {
+			this.logo.classList.toggle('hidden')
+			this.header.classList.toggle('right-0')
+			this.headerShadow.classList.toggle('visible')
+			this.headerShadow.classList.toggle('right-0')
+			this.burger.classList.toggle('burger--active')
+			this.burger.classList.toggle('position-fixed')
+			this.burgerHeader?.classList.toggle('hidden')
+			this.pets?.classList.toggle('pt-160')
+		}
 	}
 
 	init() {
