@@ -32,7 +32,7 @@
         max-width: 380px;
         display: flex;
         flex-direction: column;
-        row-gap: 20px;
+        row-gap: 19px;
 
         @media (max-width: $brake-point-2) {
           row-gap: 23px;
@@ -41,6 +41,7 @@
 
         .content__heading {
           width: 300px;
+          line-height: 133%;
 
           @media (max-width: $brake-point-2) {
             padding: 0 43px;

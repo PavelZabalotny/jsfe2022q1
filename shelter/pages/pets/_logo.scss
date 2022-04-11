@@ -1,0 +1,17 @@
+@import "../main/constants";
+@import "../main/logo";
+
+.header__logo {
+  z-index: 9999;
+  position: fixed;
+  top: 30px;
+
+  .logo__link {
+    .logo__title {
+      color: $color-dark-l;
+    }
+    .logo__subtitle {
+      color: $color-dark-3xl;
+    }
+  }
+}

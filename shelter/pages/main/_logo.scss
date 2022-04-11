@@ -1,0 +1,34 @@
+@import "constants";
+
+.header__logo {
+  font-family: Georgia, serif;
+  cursor: pointer;
+  display: none;
+
+  @media (max-width: $brake-point-2) {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    z-index: 99;
+    display: inline-block;
+  }
+
+  .logo__link {
+
+    .logo__title {
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: $color-primary;
+      margin-bottom: 9px;
+    }
+
+    .logo__subtitle {
+      font-family: Arial, serif;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-align: center;
+      color: $color-light-xl;
+    }
+  }
+}

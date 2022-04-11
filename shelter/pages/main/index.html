@@ -6,24 +6,36 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="./style.css">
-  <script src="./script.js"></script>
+  <script type="module" src="./script.js"></script>
   <title>Shelter main</title>
 </head>
 <body>
 
+<!-- TODO: Burger -->
+<div class="burger">
+  <svg width="30" height="22" viewBox="0 0 30 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line y1="21" x2="30" y2="21" stroke="#F1CDB3" stroke-width="2" />
+    <line y1="11" x2="30" y2="11" stroke="#F1CDB3" stroke-width="2" />
+    <line y1="1" x2="30" y2="1" stroke="#F1CDB3" stroke-width="2" />
+  </svg>
+</div>
+<!-- END Burger-->
+
+<!-- TODO: Logo -->
+<div id="logo" class="header__logo logo">
+  <a href="/pavelzabalotny-JSFE2022Q1/shelter/pages/main/" class="logo__link">
+    <h1 class="logo__title">Cozy House</h1>
+    <div class="logo__subtitle">Shelter for pets in Boston</div>
+  </a>
+</div>
+<!-- END Logo -->
+
 <!-- TODO: Header -->
 <header class="header">
+  <div class="header__shadow"></div>
 
   <div class="wrapper">
-    <!-- TODO: Burger -->
-    <div class="burger">
-      <svg width="30" height="22" viewBox="0 0 30 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line y1="21" x2="30" y2="21" stroke="#F1CDB3" stroke-width="2" />
-        <line y1="11" x2="30" y2="11" stroke="#F1CDB3" stroke-width="2" />
-        <line y1="1" x2="30" y2="1" stroke="#F1CDB3" stroke-width="2" />
-      </svg>
-    </div>
-    <!-- END Burger-->
+
     <div class="header__logo logo">
       <a href="/pavelzabalotny-JSFE2022Q1/shelter/pages/main/" class="logo__link">
         <h1 class="logo__title">Cozy House</h1>
@@ -106,19 +118,19 @@
         <div class="slider__content">
 
           <div class="slider__card card">
-            <img class="card__image" src="../../assets/images/slider/pets-katrine.jpg" alt="katrine">
+            <img class="card__image" src="../../assets/images/slider/katrine.png" alt="katrine">
             <div class="card__title">Katrine</div>
             <button class="card__button button">Learn more</button>
           </div>
 
           <div class="slider__card card">
-            <img class="card__image" src="../../assets/images/slider/pets-jennifer.jpg" alt="jennifer">
+            <img class="card__image" src="../../assets/images/slider/jennifer.png" alt="jennifer">
             <div class="card__title">Jennifer</div>
             <button class="card__button button">Learn more</button>
           </div>
 
           <div class="slider__card card">
-            <img class="card__image" src="../../assets/images/slider/pets-woody.jpg" alt="woody">
+            <img class="card__image" src="../../assets/images/slider/woody.png" alt="woody">
             <div class="card__title">Woody</div>
             <button class="card__button button">Learn more</button>
           </div>

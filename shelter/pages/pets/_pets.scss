@@ -2,12 +2,13 @@
 @import "../main/pets";
 
 .pets {
-  padding-bottom: 41px;
+  padding-bottom: 39px;
 
   @media (max-width: $brake-point-1) {
     padding-bottom: 18px;
   }
   @media (max-width: $brake-point-2) {
+    padding-top: 43px;
     padding-bottom: 44px;
   }
 
@@ -31,9 +32,53 @@
           margin-bottom: 0;
         }
 
+        .slider__content {
+          justify-content: center;
+
+          .pets__wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 40px;
+            row-gap: 28px;
+            margin-bottom: 59px;
+            justify-content: center;
+
+            @media (max-width: 1200px) {
+              column-gap: 40px;
+            }
+
+            @media (max-width: $brake-point-1) {
+              margin-bottom: 40px;
+            }
+
+            .slider__card {
+              row-gap: 29px;
+
+              @media (max-width: 1090px) {
+                max-height: 435px;
+                row-gap: 30px;
+
+                &:nth-last-child(-n+2) {
+                  display: none;
+                }
+              }
+
+              @media (max-width: $brake-point-2) {
+                &:nth-child(-n+3) {
+                  display: flex;
+                }
+              }
+            }
+          }
+
+        }
+
         .slider__arrows {
           display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
           column-gap: 20px;
+          row-gap: 20px;
 
           @media (max-width: $brake-point-2) {
             column-gap: 10px;
@@ -54,44 +99,6 @@
 
           .arrow--disabled {
             @extend .arrow--disabled;
-          }
-        }
-
-        .slider__content {
-          column-gap: 40px;
-          row-gap: 30px;
-          margin-bottom: 59px;
-          justify-content: center;
-
-          @media (max-width: 1200px) {
-            column-gap: 40px;
-          }
-
-          @media (max-width: $brake-point-1) {
-            margin-bottom: 40px;
-          }
-
-          @media (max-width: $brake-point-1) {
-            row-gap: 47px;
-          }
-
-          .slider__card {
-            row-gap: 28px;
-
-            @media (max-width: 1090px) {
-              max-height: 435px;
-              row-gap: 29px;
-
-              &:nth-last-child(-n+2) {
-                display: none;
-              }
-            }
-
-            @media (max-width: $brake-point-2) {
-              &:nth-child(-n+3) {
-                display: flex;
-              }
-            }
           }
         }
       }
