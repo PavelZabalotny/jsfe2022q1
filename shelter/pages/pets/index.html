@@ -48,13 +48,15 @@
 
     <nav class="header__nav-menu">
       <ul class="menu">
-        <li class="menu__item"><a href="/pavelzabalotny-JSFE2022Q1/shelter/pages/main/" class="menu__link">About the shelter</a></li>
+        <li class="menu__item"><a href="/pavelzabalotny-JSFE2022Q1/shelter/pages/main/" class="menu__link">About the
+          shelter</a></li>
         <li class="menu__item">
           <a href="" class="menu__link menu__link-active">
             Our pets
           </a>
         </li>
-        <li class="menu__item"><a href="/pavelzabalotny-JSFE2022Q1/shelter/pages/main/#help" class="menu__link">Help the shelter</a></li>
+        <li class="menu__item"><a href="/pavelzabalotny-JSFE2022Q1/shelter/pages/main/#help" class="menu__link">Help the
+          shelter</a></li>
         <li class="menu__item"><a href="#footer" class="menu__link">Contacts</a></li>
       </ul>
     </nav>
@@ -74,64 +76,73 @@
       <div class="pets__slider slider">
 
         <div class="slider__content">
-          <div class="slider__card card">
-            <img class="card__image" src="../../assets/images/slider/katrine.jpg" alt="katrine">
-            <div class="card__title">Katrine</div>
-            <button class="card__button button">Learn more</button>
+
+          <div class="pets__wrapper">
+            <div class="slider__card card">
+              <img class="card__image" src="../../assets/images/slider/katrine.png" alt="katrine">
+              <div class="card__title">Katrine</div>
+              <button class="card__button button">Learn more</button>
+            </div>
+            <div class="slider__card card">
+              <img class="card__image" src="../../assets/images/slider/jennifer.png" alt="jennifer">
+              <div class="card__title">Jennifer</div>
+              <button class="card__button button">Learn more</button>
+            </div>
+            <div class="slider__card card">
+              <img class="card__image" src="../../assets/images/slider/woody.png" alt="woody">
+              <div class="card__title">Woody</div>
+              <button class="card__button button">Learn more</button>
+            </div>
+            <div class="slider__card card">
+              <img class="card__image" src="../../assets/images/slider/sophia.png" alt="sophia">
+              <div class="card__title">Sophia</div>
+              <button class="card__button button">Learn more</button>
+            </div>
+            <div class="slider__card card">
+              <img class="card__image" src="../../assets/images/slider/timmy.png" alt="timmy">
+              <div class="card__title">Timmy</div>
+              <button class="card__button button">Learn more</button>
+            </div>
+            <div class="slider__card card">
+              <img class="card__image" src="../../assets/images/slider/charly.png" alt="charly">
+              <div class="card__title">Charly</div>
+              <button class="card__button button">Learn more</button>
+            </div>
+            <div class="slider__card card">
+              <img class="card__image" src="../../assets/images/slider/scarlett.png" alt="scarlett">
+              <div class="card__title">Scarlett</div>
+              <button class="card__button button">Learn more</button>
+            </div>
+            <div class="slider__card card">
+              <img class="card__image" src="../../assets/images/slider/freddie.png" alt="freddie">
+              <div class="card__title">Freddie</div>
+              <button class="card__button button">Learn more</button>
+            </div>
           </div>
 
-          <div class="slider__card card">
-            <img class="card__image" src="../../assets/images/slider/jennifer.jpg" alt="jennifer">
-            <div class="card__title">Jennifer</div>
-            <button class="card__button button">Learn more</button>
-          </div>
-
-          <div class="slider__card card">
-            <img class="card__image" src="../../assets/images/slider/woody.jpg" alt="woody">
-            <div class="card__title">Woody</div>
-            <button class="card__button button">Learn more</button>
-          </div>
-
-          <div class="slider__card card">
-            <img class="card__image" src="../../assets/images/slider/sophia.jpg" alt="sophia">
-            <div class="card__title">Sophia</div>
-            <button class="card__button button">Learn more</button>
-          </div>
-
-          <div class="slider__card card">
-            <img class="card__image" src="../../assets/images/slider/timmy.jpg" alt="timmy">
-            <div class="card__title">Timmy</div>
-            <button class="card__button button">Learn more</button>
-          </div>
-
-          <div class="slider__card card">
-            <img class="card__image" src="../../assets/images/slider/charly.jpg" alt="charly">
-            <div class="card__title">Charly</div>
-            <button class="card__button button">Learn more</button>
-          </div>
-
-          <div class="slider__card card">
-            <img class="card__image" src="../../assets/images/slider/scarlet.jpg" alt="scarlet">
-            <div class="card__title">Scarlet</div>
-            <button class="card__button button">Learn more</button>
-          </div>
-
-          <div class="slider__card card">
-            <img class="card__image" src="../../assets/images/slider/freddie.jpg" alt="freddie">
-            <div class="card__title">Freddie</div>
-            <button class="card__button button">Learn more</button>
-          </div>
         </div>
+
         <div class="slider__arrows">
-          <div class="slider__arrow arrow arrow--disabled"><h4>&lt;&lt;</h4></div>
-          <div class="slider__arrow arrow arrow--disabled"><h4>&lt;</h4></div>
-          <div class="slider__arrow arrow arrow--active"><h4>1</h4></div>
-          <div class="slider__arrow arrow"><h4>&gt;</h4></div>
-          <div class="slider__arrow arrow"><h4>&gt;&gt;</h4></div>
+
+          <div class="slider__arrow arrow arrow--disabled" data-arrow="<<">
+            <h4>&lt;&lt;</h4>
+          </div>
+          <div class="slider__arrow arrow arrow--disabled" data-arrow="<">
+            <h4>&lt;</h4>
+          </div>
+          <div class="slider__arrow arrow arrow--active" data-page="1">
+            <h4>1</h4>
+          </div>
+          <div class="slider__arrow arrow" data-arrow=">">
+            <h4>&gt;</h4>
+          </div>
+          <div class="slider__arrow arrow" data-arrow=">>">
+            <h4>&gt;&gt;</h4>
+          </div>
+
         </div>
 
       </div>
-
     </div>
   </div>
 </section>
@@ -218,5 +229,6 @@
     </div>
   </div>
 </div>
+
 </body>
 </html>

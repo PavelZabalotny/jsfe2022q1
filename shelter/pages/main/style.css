@@ -18,7 +18,7 @@
   font-weight: 400;
   letter-spacing: 0.06em;
   color: #F1CDB3;
-  margin-bottom: 10px;
+  margin-bottom: 9px;
 }
 .header__logo .logo__link .logo__subtitle {
   font-family: Arial, serif;
@@ -26,7 +26,6 @@
   letter-spacing: 0.1em;
   text-align: center;
   color: #FFFFFF;
-  padding-right: 1px;
 }
 
 .burger {
@@ -145,7 +144,7 @@
 
 .start_screen {
   position: relative;
-  top: -60px;
+  top: -62px;
   padding-top: 180px;
   background: url(../../assets/images/noise_transparent_2x.png) repeat, radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%);
 }
@@ -178,7 +177,7 @@
   flex-basis: 460px;
   padding-top: 13.58%;
 }
-@media (max-width: 912px) {
+@media (max-width: 914px) {
   .start_screen .wrapper .start_screen__container .start_screen__content {
     padding-top: 0;
   }
@@ -196,9 +195,9 @@
   font-family: Georgia, serif;
   font-size: 44px;
   font-weight: 400;
-  line-height: 129%;
+  line-height: 132%;
   color: #FFFFFF;
-  margin-bottom: 42px;
+  margin-bottom: 41px;
 }
 @media (max-width: 743px) {
   .start_screen .wrapper .start_screen__container .start_screen__content .content__heading {
@@ -212,7 +211,7 @@
   font-family: "Arial", serif;
   font-weight: 400;
   font-size: 15px;
-  line-height: 155%;
+  line-height: 159%;
   color: #CDCDCD;
   margin-bottom: 43px;
 }
@@ -227,8 +226,8 @@
   }
 }
 .start_screen .wrapper .start_screen__container .start_screen_image {
-  flex-basis: 695px;
-  margin-left: 45px;
+  flex-basis: 698px;
+  margin-left: 42px;
 }
 @media (max-width: 870px) {
   .start_screen .wrapper .start_screen__container .start_screen_image {
@@ -250,7 +249,7 @@
 }
 
 .about {
-  padding-top: 23px;
+  padding-top: 20px;
   padding-bottom: 100px;
   background-color: #FFFFFF;
 }
@@ -511,7 +510,7 @@
   max-width: 380px;
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  row-gap: 19px;
 }
 @media (max-width: 743px) {
   .donation .wrapper .donation__container .donation__content {
@@ -521,6 +520,7 @@
 }
 .donation .wrapper .donation__container .donation__content .content__heading {
   width: 300px;
+  line-height: 133%;
 }
 @media (max-width: 743px) {
   .donation .wrapper .donation__container .donation__content .content__heading {
@@ -711,6 +711,7 @@ a,
 
 img {
   max-width: 100%;
+  max-height: 100%;
   display: block;
 }
 
