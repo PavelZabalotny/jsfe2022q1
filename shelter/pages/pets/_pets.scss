@@ -39,7 +39,7 @@
             display: flex;
             flex-wrap: wrap;
             column-gap: 40px;
-            row-gap: 28px;
+            row-gap: 31px;
             margin-bottom: 59px;
             justify-content: center;
 
@@ -67,6 +67,10 @@
                 &:nth-child(-n+3) {
                   display: flex;
                 }
+              }
+
+              .button {
+                padding: 14px 44px;
               }
             }
           }
@@ -99,6 +103,10 @@
 
           .arrow--disabled {
             @extend .arrow--disabled;
+          }
+
+          .arrow--active {
+            border: 2px solid transparent;
           }
         }
       }

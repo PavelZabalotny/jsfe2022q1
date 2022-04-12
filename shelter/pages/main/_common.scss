@@ -144,7 +144,8 @@ h5 {
 
   &:hover,
   &--active {
-    background-color: $color-primary;
+    background-color: $color-primary-hover;
+    border: 2px solid transparent;
   }
 
   &--active {
@@ -181,7 +182,7 @@ h5 {
 }
 
 .button {
-  padding: 15px 45px;
+  padding: 13px 43px;
   display: inline-block;
   background-color: $color-light-xl;
   border-radius: 100px;
@@ -196,11 +197,12 @@ h5 {
 
   &:hover {
     background-color: $color-primary-hover;
+    border: 2px solid transparent;
   }
 }
 
 .button-primary {
-  border: 0;
+  //border: 0;
   background-color: $color-primary;
 }
 
