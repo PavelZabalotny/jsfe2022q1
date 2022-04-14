@@ -23,7 +23,7 @@ const sliderContent = document.querySelector('.pets__wrapper')
 const sliderArrows = document.querySelector('.slider__arrows')
 const petsArray = generatePaginationArray(pets, shuffle) // 48 pets elements
 const sliderConfig = {
-	currentPage: 1, // 1 ... 6
+	currentPage: 1,
 	elementsPerPage: 8, // depends on screen width (8 || 6 || 3)
 }
 
@@ -105,15 +105,15 @@ function handlePaginationClick(divElement) {
 			break
 		case dataAttribute === '<':
 			sliderConfig.currentPage--
-			if(sliderConfig.currentPage === 1) {
+			if (sliderConfig.currentPage === 1) {
 				disableElements()
 			} else {
 				arrows.forEach(el => {
 					el.classList.remove('arrow--disabled')
-					if(Number(el.dataset.page) === sliderConfig.currentPage + 1) {
+					if (Number(el.dataset.page) === sliderConfig.currentPage + 1) {
 						el.classList.remove('arrow--active')
 					}
-					if(Number(el.dataset.page) === sliderConfig.currentPage) {
+					if (Number(el.dataset.page) === sliderConfig.currentPage) {
 						el.classList.add('arrow--active')
 					}
 				})
@@ -125,15 +125,15 @@ function handlePaginationClick(divElement) {
 			break
 		case dataAttribute === '>':
 			sliderConfig.currentPage++
-			if(sliderConfig.currentPage === paginationPages) {
+			if (sliderConfig.currentPage === paginationPages) {
 				disableElements()
 			} else {
 				arrows.forEach(el => {
 					el.classList.remove('arrow--disabled')
-					if(Number(el.dataset.page) === sliderConfig.currentPage - 1) {
+					if (Number(el.dataset.page) === sliderConfig.currentPage - 1) {
 						el.classList.remove('arrow--active')
 					}
-					if(Number(el.dataset.page) === sliderConfig.currentPage) {
+					if (Number(el.dataset.page) === sliderConfig.currentPage) {
 						el.classList.add('arrow--active')
 					}
 				})
@@ -143,39 +143,44 @@ function handlePaginationClick(divElement) {
 			sliderConfig.currentPage = paginationPages
 			disableElements()
 			break
-		default:
-			console.log('switch nothing');
 	}
 
 	renderPets()
 }
 
 function renderPagination({currentPage, elementsPerPage}, petsArray) {
-	let paginationPages = petsArray.length / elementsPerPage // 48 / 8 = 6
+	sliderArrows.innerHTML = ''
+	let paginationPages = petsArray.length / elementsPerPage
+
+	if (currentPage > paginationPages) {
+		currentPage = paginationPages
+	}
+	let firstArrows = +currentPage === 1 ? 'arrow--disabled' : null
+	let lastArrows = +currentPage === paginationPages ? 'arrow--disabled' : null
 
 	const firstsLeftArrow = createPaginationElement(
-		['slider__arrow', 'arrow', 'arrow--disabled'],
+		['slider__arrow', 'arrow', firstArrows],
 		'page',
 		'<<',
 		'h4',
 		'<<'
 	)
 	const leftArrow = createPaginationElement(
-		['slider__arrow', 'arrow', 'arrow--disabled'],
+		['slider__arrow', 'arrow', firstArrows],
 		'page',
 		'<',
 		'h4',
 		'<'
 	)
 	const rightArrow = createPaginationElement(
-		['slider__arrow', 'arrow'],
+		['slider__arrow', 'arrow', lastArrows],
 		'page',
 		'>',
 		'h4',
 		'>'
 	)
 	const lastRightArrow = createPaginationElement(
-		['slider__arrow', 'arrow'],
+		['slider__arrow', 'arrow', lastArrows],
 		'page',
 		'>>',
 		'h4',
@@ -185,23 +190,63 @@ function renderPagination({currentPage, elementsPerPage}, petsArray) {
 	sliderArrows.insertAdjacentElement('beforeend', firstsLeftArrow)
 	sliderArrows.insertAdjacentElement('beforeend', leftArrow)
 
+	let pageElement
+
 	for (let i = 1; i <= paginationPages; i++) {
-		const classes = i === 1
+		const classes = i === +currentPage // 1
 			? ['slider__arrow', 'arrow', 'arrow--active']
 			: ['slider__arrow', 'arrow']
 
-		sliderArrows.insertAdjacentElement('beforeend', createPaginationElement(
-			classes,
-			'page',
-			i,
-			'h4',
-			i
-		))
+		pageElement = createPaginationElement(classes, 'page', i, 'h4', i)
+
+		sliderArrows.insertAdjacentElement('beforeend', pageElement)
+
+		if(i === +currentPage) {
+			pageElement.click()
+		}
 	}
 
 	sliderArrows.insertAdjacentElement('beforeend', rightArrow)
 	sliderArrows.insertAdjacentElement('beforeend', lastRightArrow)
 }
 
-// renderPets()
-// renderPagination(sliderConfig, petsArray)
+// Generation of the required number of adaptive cards when a resize event occurs
+const resizeConfig = {
+	delay: 250,
+	isThrottled: false,
+	hasRerender: false,
+}
+window.addEventListener('resize', () => {
+	if (!resizeConfig.isThrottled) {
+		handleResize()
+		resizeConfig.isThrottled = true
+		// set delay
+		setTimeout(() => {
+			resizeConfig.isThrottled = false
+		}, resizeConfig.delay)
+	}
+})
+
+function handleResize() {
+	let clientWidth = document.body.clientWidth
+	if (clientWidth >= 1091 && sliderConfig.elementsPerPage !== 8) {
+		sliderConfig.elementsPerPage = 8
+		resizeConfig.hasRerender = true
+	} else if (clientWidth >= 600 && clientWidth < 1091 && sliderConfig.elementsPerPage !== 6) {
+		sliderConfig.elementsPerPage = 6
+		resizeConfig.hasRerender = true
+	} else if (clientWidth < 600 && sliderConfig.elementsPerPage !== 3) {
+		sliderConfig.elementsPerPage = 3
+		resizeConfig.hasRerender = true
+	}
+
+	if (resizeConfig.hasRerender) {
+		resizeConfig.hasRerender = false
+		renderPets()
+		renderPagination(sliderConfig, petsArray)
+	}
+}
+
+handleResize()
+renderPets()
+renderPagination(sliderConfig, petsArray)
