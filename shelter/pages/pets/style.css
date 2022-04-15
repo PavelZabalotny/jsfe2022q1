@@ -264,6 +264,11 @@
   background-color: #FAFAFA;
   cursor: pointer;
   border-radius: 9px;
+  /*@media (max-width: 1090px) {
+    &:last-child {
+      display: none;
+    }
+  }*/
 }
 .pets .wrapper .pets__content .pets__slider .slider__content .slider__card:hover {
   background-color: #FFFFFF;
@@ -273,18 +278,13 @@
   border: 2px solid transparent;
   background-color: #FDDCC4;
 }
-@media (max-width: 1090px) {
-  .pets .wrapper .pets__content .pets__slider .slider__content .slider__card:last-child {
-    display: none;
-  }
-}
 @media (max-width: 743px) {
   .pets .wrapper .pets__content .pets__slider .slider__content .slider__card {
     margin-top: -17px;
     row-gap: 29px;
-  }
-  .pets .wrapper .pets__content .pets__slider .slider__content .slider__card:not(:first-child) {
-    display: none;
+    /*&:not(:first-child) {
+      display: none;
+    }*/
   }
 }
 .pets .wrapper .pets__content .pets__slider .slider__content .slider__card .card__image {
@@ -361,19 +361,19 @@
 }
 .pets .wrapper .pets__content .pets__slider .slider__content .pets__wrapper .slider__card {
   row-gap: 29px;
+  /*@media (max-width: $brake-point-2) {
+    &:nth-child(-n+3) {
+      display: flex;
+    }
+  }*/
 }
 @media (max-width: 1090px) {
   .pets .wrapper .pets__content .pets__slider .slider__content .pets__wrapper .slider__card {
     max-height: 435px;
     row-gap: 30px;
-  }
-  .pets .wrapper .pets__content .pets__slider .slider__content .pets__wrapper .slider__card:nth-last-child(-n+2) {
-    display: none;
-  }
-}
-@media (max-width: 743px) {
-  .pets .wrapper .pets__content .pets__slider .slider__content .pets__wrapper .slider__card:nth-child(-n+3) {
-    display: flex;
+    /*&:nth-last-child(-n+2) {
+      display: none;
+    }*/
   }
 }
 .pets .wrapper .pets__content .pets__slider .slider__content .pets__wrapper .slider__card .button {
@@ -646,6 +646,13 @@ h5 {
   color: #292929;
   user-select: none;
 }
+.arrow:hover, .pets .wrapper .pets__content .pets__slider .slider__arrow:hover, .arrow--active {
+  background-color: #FDDCC4;
+  border: 2px solid transparent;
+}
+.arrow--active {
+  pointer-events: none;
+}
 .arrow--disabled, .pets .wrapper .pets__content .pets__slider .slider__arrows .arrow--disabled {
   border: 2px solid #CDCDCD;
   color: #CDCDCD;
@@ -653,13 +660,6 @@ h5 {
 }
 .arrow--disabled:hover, .pets .wrapper .pets__content .pets__slider .slider__arrows .arrow--disabled:hover {
   background-color: transparent;
-}
-.arrow:hover, .pets .wrapper .pets__content .pets__slider .slider__arrow:hover, .arrow--active {
-  background-color: #FDDCC4;
-  border: 2px solid transparent;
-}
-.arrow--active {
-  pointer-events: none;
 }
 .arrow h4, .pets .wrapper .pets__content .pets__slider .slider__arrow h4 {
   color: inherit;

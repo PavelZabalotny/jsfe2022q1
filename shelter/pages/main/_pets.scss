@@ -71,19 +71,19 @@
 
 
 
-            @media (max-width: 1090px) {
+            /*@media (max-width: 1090px) {
               &:last-child {
                 display: none;
               }
-            }
+            }*/
 
             @media (max-width: $brake-point-2) {
               margin-top: -17px;
               row-gap: 29px;
 
-              &:not(:first-child) {
+              /*&:not(:first-child) {
                 display: none;
-              }
+              }*/
             }
 
             .card__image {

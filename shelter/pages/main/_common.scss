@@ -132,16 +132,6 @@ h5 {
   color: $color-dark-3xl;
   user-select: none;
 
-  &--disabled {
-    border: 2px solid $color-dark-s;
-    color: $color-dark-s;
-    pointer-events: none;
-
-    &:hover {
-      background-color: transparent;
-    }
-  }
-
   &:hover,
   &--active {
     background-color: $color-primary-hover;
@@ -150,6 +140,16 @@ h5 {
 
   &--active {
     pointer-events: none;
+  }
+
+  &--disabled {
+    border: 2px solid $color-dark-s;
+    color: $color-dark-s;
+    pointer-events: none;
+
+    &:hover {
+      background-color: transparent;
+    }
   }
 
   h4 {
