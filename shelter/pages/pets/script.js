@@ -218,7 +218,7 @@ const resizeConfig = {
 }
 window.addEventListener('resize', () => {
 	if (!resizeConfig.isThrottled) {
-		handleResize()
+		// handleResize()
 		resizeConfig.isThrottled = true
 		// set delay
 		setTimeout(() => {
@@ -247,6 +247,6 @@ function handleResize() {
 	}
 }
 
-handleResize()
-renderPets()
-renderPagination(sliderConfig, petsArray)
+// handleResize()
+// renderPets()
+// renderPagination(sliderConfig, petsArray)
