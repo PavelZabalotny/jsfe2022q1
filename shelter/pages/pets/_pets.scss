@@ -51,23 +51,27 @@
               margin-bottom: 40px;
             }
 
+            @media (max-width: $brake-point-2) {
+              row-gap: 47px;
+            }
+
             .slider__card {
               row-gap: 29px;
 
               @media (max-width: 1090px) {
                 max-height: 435px;
-                row-gap: 30px;
-
-                /*&:nth-last-child(-n+2) {
+                // del
+                &:nth-last-child(-n+2) {
                   display: none;
-                }*/
+                }
               }
-
-              /*@media (max-width: $brake-point-2) {
+              // del
+              @media (max-width: $brake-point-2) {
+                display: none;
                 &:nth-child(-n+3) {
                   display: flex;
                 }
-              }*/
+              }
 
               .button {
                 padding: 14px 44px;
