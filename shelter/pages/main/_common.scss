@@ -168,16 +168,24 @@ h5 {
 .arrow__pos-left {
   margin-right: auto;
 
+  /*@media (max-width: 900px) {
+    margin-right: auto;
+  }*/
+
   @media (max-width: $brake-point-2) {
-    left: 58px;
+    left: 18.9%;
   }
 }
 
 .arrow__pos-right {
   margin-left: auto;
 
+  /*@media (max-width: 900px) {
+    margin-left: auto;
+  }*/
+
   @media (max-width: $brake-point-2) {
-    right: 58px;
+    right: 18.9%;
   }
 }
 

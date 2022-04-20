@@ -43,22 +43,21 @@
             margin-bottom: 59px;
             justify-content: center;
 
-            @media (max-width: 1200px) {
-              column-gap: 40px;
-            }
-
             @media (max-width: $brake-point-1) {
+              max-width: $brake-point-2;
+              column-gap: 40px;
               margin-bottom: 40px;
             }
 
             @media (max-width: $brake-point-2) {
+              max-width: 320px;
               row-gap: 47px;
             }
 
             .slider__card {
               row-gap: 29px;
 
-              @media (max-width: 1090px) {
+              @media (max-width: $brake-point-1) {
                 max-height: 435px;
                 // del
                 &:nth-last-child(-n+2) {

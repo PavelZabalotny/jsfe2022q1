@@ -1,0 +1,97 @@
+@import "constants";
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 99999;
+  background-color: $bg-modal;
+
+  .modal__window {
+    width: 900px;
+    max-height: 500px;
+    background: $color-light-s;
+    border-radius: 9px;
+    position: absolute;
+    z-index: 999999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    column-gap: 30px;
+
+    .modal__close {
+      width: 52px;
+      height: 52px;
+      position: absolute;
+      top: -52px;
+      right: -42px;
+      background: url(../../assets/icons/Vector.svg) 50% 50% no-repeat;
+      border: 2px solid $color-primary;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: $transition-2;
+
+      &:hover {
+        background-color: $color-primary-hover;
+        border: 2px solid transparent;
+      }
+    }
+
+    .modal__image {
+      width: 500px;
+      height: 500px;
+      border-radius: 9px 0 0 9px;
+    }
+
+    .modal__content {
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 40px;
+
+      .modal__block {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+
+        .modal__title {
+          color: inherit;
+        }
+
+        .modal__subtitle {
+          color: inherit;
+        }
+      }
+
+      .modal__text {
+        max-width: 350px;
+        color: inherit;
+      }
+
+      .list {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+
+        .list__item {
+          h5 {
+            display: inline;
+            color: inherit;
+          }
+          &::before {
+            content: "•";
+            color: $color-primary;
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+}
