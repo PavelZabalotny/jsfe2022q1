@@ -15,14 +15,16 @@
       flex-wrap: wrap;
       column-gap: 160px;
 
-      @media (max-width: 1279px) {
+      @media (max-width: $brake-point-1) {
+        max-width: $brake-point-2;
         column-gap: 60px;
         justify-content: center;
+        align-items: center;
+        margin: 0 auto;
       }
 
       @media (max-width: $brake-point-2) {
         flex-direction: column;
-        align-items: center;
       }
 
       .footer__block {
@@ -42,7 +44,9 @@
           height: auto;
           margin-bottom: 20px;
           align-items: center;
+        }
 
+        @media (max-width: 320px) {
           &:nth-child(2) {
             ul {
               align-items: initial;
@@ -114,7 +118,7 @@
       .footer__image {
         margin-left: 6px;
 
-        @media (max-width: 1096px) {
+        @media (max-width: $brake-point-1) {
           margin-top: 64px;
         }
 

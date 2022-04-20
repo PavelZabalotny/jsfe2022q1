@@ -10,7 +10,7 @@ export default class {
 	}
 
 	burgerClick() {
-		if(window.innerWidth < 744) {
+		if(window.innerWidth < 768) {
 			this.logo.classList.toggle('hidden')
 			this.header.classList.toggle('right-0')
 			this.headerShadow.classList.toggle('visible')

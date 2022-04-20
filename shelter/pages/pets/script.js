@@ -16,19 +16,20 @@ const domElements = {
 
 const burger = new Burger(domElements)
 burger.init()
-
+/* END Burger */
 
 /* TODO: Pagination */
 const sliderContent = document.querySelector('.pets__wrapper')
 const sliderArrows = document.querySelector('.slider__arrows')
 const petsArray = generatePaginationArray(pets, shuffle) // 48 pets elements
+// const sliderCards = document.querySelectorAll('.slider__card')
 const sliderConfig = {
 	currentPage: 1,
 	elementsPerPage: 8, // depends on screen width (8 || 6 || 3)
 }
 
 function mapPetsElements(arr) {
-	return arr.map(({name, img}) => (`<div class="slider__card card">
+	return arr.map(({name, img}) => (`<div class="slider__card card" data-name=${name}>
             <img class="card__image" src=${img} alt=${name}>
             <div class="card__title">${name}</div>
             <button class="card__button button">Learn more</button>
@@ -38,9 +39,7 @@ function mapPetsElements(arr) {
 function getPetsElements({currentPage, elementsPerPage}, petsArray = []) {
 	let end = currentPage * elementsPerPage
 	let start = end - elementsPerPage
-	const pets = petsArray.slice(start, end)
-
-	return pets
+	return petsArray.slice(start, end)
 }
 
 function renderPets() {
@@ -201,7 +200,7 @@ function renderPagination({currentPage, elementsPerPage}, petsArray) {
 
 		sliderArrows.insertAdjacentElement('beforeend', pageElement)
 
-		if(i === +currentPage) {
+		if (i === +currentPage) {
 			pageElement.click()
 		}
 	}
@@ -250,3 +249,17 @@ function handleResize() {
 // handleResize()
 // renderPets()
 // renderPagination(sliderConfig, petsArray)
+
+/* TODO: Popup */
+
+sliderContent.addEventListener('click', handleCard)
+
+function handleCard(e) {
+	const card = e.target.classList.contains('slider__card') ? e.target : e.target.parentElement
+	for (const {name, breed} of petsArray) {
+		if (name === card.dataset.name) {
+			console.log(breed)
+			break
+		}
+	}
+}
