@@ -773,6 +773,10 @@ ul.h-110 {
   position: fixed;
 }
 
+.overflowY-hidden {
+  overflow-y: hidden;
+}
+
 .modal {
   display: none;
   position: fixed;

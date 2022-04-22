@@ -19,6 +19,7 @@ export default class {
 			this.burger.classList.toggle('position-fixed')
 			this.burgerHeader?.classList.toggle('hidden')
 			this.pets?.classList.toggle('pt-160')
+			document.body.classList.toggle('overflowY-hidden')
 		}
 	}
 
