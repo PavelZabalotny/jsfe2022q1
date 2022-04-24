@@ -267,6 +267,7 @@
   justify-content: center;
   column-gap: 120px;
 }
+
 @media (max-width: 1279px) {
   .about .wrapper .about__content {
     flex-direction: column-reverse;
@@ -290,6 +291,7 @@
   max-height: 380px;
   padding-top: 13px;
 }
+
 @media (max-width: 1279px) {
   .about .wrapper .about__content .content__container {
     padding-top: 0;
