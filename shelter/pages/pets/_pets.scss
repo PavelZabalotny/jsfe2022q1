@@ -59,17 +59,6 @@
 
               @media (max-width: $brake-point-1) {
                 max-height: 435px;
-                // del
-                &:nth-last-child(-n+2) {
-                  display: none;
-                }
-              }
-              // del
-              @media (max-width: $brake-point-2) {
-                display: none;
-                &:nth-child(-n+3) {
-                  display: flex;
-                }
               }
 
               .button {

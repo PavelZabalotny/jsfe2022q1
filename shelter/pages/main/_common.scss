@@ -37,10 +37,6 @@ dd {
 
 a {
   text-decoration: none;
-
-  &:hover {
-    //color: lighten(blue, 30%);
-  }
 }
 
 button,
@@ -74,7 +70,6 @@ body {
   max-width: $wrapper-size;
   margin: 0 auto;
   padding: 0 40px;
-  //outline: 1px solid red;
 
   @media (max-width: $brake-point-1) {
     padding: 0 30px;
@@ -168,10 +163,6 @@ h5 {
 .arrow__pos-left {
   margin-right: auto;
 
-  /*@media (max-width: 900px) {
-    margin-right: auto;
-  }*/
-
   @media (max-width: $brake-point-2) {
     left: 18.9%;
   }
@@ -179,10 +170,6 @@ h5 {
 
 .arrow__pos-right {
   margin-left: auto;
-
-  /*@media (max-width: 900px) {
-    margin-left: auto;
-  }*/
 
   @media (max-width: $brake-point-2) {
     right: 18.9%;
@@ -210,7 +197,6 @@ h5 {
 }
 
 .button-primary {
-  //border: 0;
   background-color: $color-primary;
 }
 
@@ -248,4 +234,25 @@ ul.h-110 {
 
 .position-fixed {
   position: fixed;
+}
+
+.overflowY-hidden {
+  overflow-y: hidden;
+}
+
+.modal > .modal__window > div.modal__close--hover {
+  background-color: $color-primary-hover;
+  border: 2px solid transparent;
+}
+
+.modal.opacity-1 {
+  opacity: 1;
+}
+
+.opacity-1 {
+  opacity: 1;
+}
+
+.opacity-0 {
+  opacity: 0 !important;
 }
