@@ -2,13 +2,13 @@ import Burger from "../../assets/js/burger.js"
 import {generatePaginationArray} from "../../assets/js/pagination.js"
 import {pets} from "../../assets/js/pets.js"
 import shuffle from "../../assets/js/utils/array-randomization.js"
+import Popup from "../../assets/js/popup.js"
 
 /* TODO: Burger */
 const domElements = {
 	burger: document.querySelector('.burger'),
 	header: document.querySelector('.header'),
 	headerShadow: document.querySelector('.header__shadow'),
-	logo: document.querySelector('#logo'),
 	headerLink: document.querySelectorAll('.menu__link'),
 	burgerHeader: document.querySelector('.burger-header'),
 	pets: document.querySelector('.pets'),
@@ -22,10 +22,10 @@ burger.init()
 const sliderContent = document.querySelector('.pets__wrapper')
 const sliderArrows = document.querySelector('.slider__arrows')
 const petsArray = generatePaginationArray(pets, shuffle) // 48 pets elements
-// const sliderCards = document.querySelectorAll('.slider__card')
+
 const sliderConfig = {
 	currentPage: 1,
-	elementsPerPage: 8, // depends on screen width (8 || 6 || 3)
+	elementsPerPage: null, // depends on screen width (8 || 6 || 3)
 }
 
 function mapPetsElements(arr) {
@@ -44,6 +44,11 @@ function getPetsElements({currentPage, elementsPerPage}, petsArray = []) {
 
 function renderPets() {
 	sliderContent.innerHTML = mapPetsElements(getPetsElements(sliderConfig, petsArray))
+
+	/* TODO: Popup */
+	const sliderCard = document.querySelectorAll('.slider__card')
+	const popup = new Popup(sliderCard, pets)
+	popup.init()
 }
 
 function createPaginationElement(classes = [], attribute, attributeProperty, innerElement, innerText) {
@@ -144,7 +149,14 @@ function handlePaginationClick(divElement) {
 			break
 	}
 
-	renderPets()
+	// render with fadeOut effect
+	setTimeout(() => {
+		renderPets()
+	}, 200)
+
+	document.querySelectorAll('.slider__card').forEach(el => {
+		el.classList.add('opacity-0')
+	})
 }
 
 function renderPagination({currentPage, elementsPerPage}, petsArray) {
@@ -211,13 +223,13 @@ function renderPagination({currentPage, elementsPerPage}, petsArray) {
 
 // Generation of the required number of adaptive cards when a resize event occurs
 const resizeConfig = {
-	delay: 250,
+	delay: 50,
 	isThrottled: false,
 	hasRerender: false,
 }
 window.addEventListener('resize', () => {
 	if (!resizeConfig.isThrottled) {
-		// handleResize()
+		handleResize()
 		resizeConfig.isThrottled = true
 		// set delay
 		setTimeout(() => {
@@ -228,13 +240,13 @@ window.addEventListener('resize', () => {
 
 function handleResize() {
 	let clientWidth = document.body.clientWidth
-	if (clientWidth >= 1091 && sliderConfig.elementsPerPage !== 8) {
+	if (clientWidth >= 1280 && sliderConfig.elementsPerPage !== 8) {
 		sliderConfig.elementsPerPage = 8
 		resizeConfig.hasRerender = true
-	} else if (clientWidth >= 600 && clientWidth < 1091 && sliderConfig.elementsPerPage !== 6) {
+	} else if (clientWidth >= 768 && clientWidth < 1280 && sliderConfig.elementsPerPage !== 6) {
 		sliderConfig.elementsPerPage = 6
 		resizeConfig.hasRerender = true
-	} else if (clientWidth < 600 && sliderConfig.elementsPerPage !== 3) {
+	} else if (clientWidth < 768 && sliderConfig.elementsPerPage !== 3) {
 		sliderConfig.elementsPerPage = 3
 		resizeConfig.hasRerender = true
 	}
@@ -246,20 +258,6 @@ function handleResize() {
 	}
 }
 
-// handleResize()
-// renderPets()
-// renderPagination(sliderConfig, petsArray)
-
-/* TODO: Popup */
-
-sliderContent.addEventListener('click', handleCard)
-
-function handleCard(e) {
-	const card = e.target.classList.contains('slider__card') ? e.target : e.target.parentElement
-	for (const {name, breed} of petsArray) {
-		if (name === card.dataset.name) {
-			console.log(breed)
-			break
-		}
-	}
-}
+handleResize()
+renderPets()
+renderPagination(sliderConfig, petsArray)

@@ -57,6 +57,8 @@
             background-color: $color-light-s;
             cursor: pointer;
             border-radius: 9px;
+            transition: 0.1s;
+            opacity: 1;
 
             &:hover {
               background-color: $color-light-xl;
@@ -68,21 +70,9 @@
               }
             }
 
-            // del
-            @media (max-width: $brake-point-1) {
-              &:last-child {
-                display: none;
-              }
-            }
-
             @media (max-width: $brake-point-2) {
               margin-top: -16px;
               row-gap: 31px;
-
-              // del
-              &:not(:first-child) {
-                display: none;
-              }
             }
 
             .card__image {
