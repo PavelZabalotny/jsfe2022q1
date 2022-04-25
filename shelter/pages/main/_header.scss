@@ -4,7 +4,7 @@
   position: relative;
   top: 60px;
   z-index: 999;
-  transition: $transition-2;
+  transition: $transition-2*2;
 
   &__shadow {
     display: none;
