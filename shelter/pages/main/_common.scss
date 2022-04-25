@@ -256,3 +256,23 @@ ul.h-110 {
 .opacity-0 {
   opacity: 0 !important;
 }
+
+@keyframes swipe-right {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: -100vw;
+  }
+}
+
+@keyframes swipe-left {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: 100vw;
+  }
+}

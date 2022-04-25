@@ -45,7 +45,7 @@ export default class {
 		return element
 	}
 
-	handleArrowClick() {
+	handleArrowClick(side) {
 		const allPets = document.querySelectorAll('.slider__card')
 		const petsShown = []
 		allPets.forEach(el => {
@@ -55,14 +55,23 @@ export default class {
 		this.getPetsMap(newPets)
 		this.generateSliderPets()
 
-		// render with fadeOut effect
+		// render with delay
 		setTimeout(() => {
 			this.renderPets()
 			// set popup
 			this.setPetsPopup()
-		}, 200)
+		}, 500)
 
+		// set animation
 		document.querySelectorAll('.slider__card').forEach(el => {
+			if (side === 'right') {
+				el.style.animationName = 'swipe-right'
+				el.classList.add('swipe-right')
+			} else if (side === 'left') {
+				el.style.animationName = 'swipe-left'
+				el.classList.add('swipe-left')
+			}
+
 			el.classList.add('opacity-0')
 		})
 	}
@@ -70,14 +79,14 @@ export default class {
 	generateSliderArrows() {
 		// left arrow
 		let arrowLeft = this.generateElement('div', ['slider__arrow', 'arrow_bg', 'arrow__pos-left'])
-		arrowLeft.addEventListener('click', () => this.handleArrowClick())
+		arrowLeft.addEventListener('click', () => this.handleArrowClick('left'))
 		this.sliderLink.insertAdjacentElement('afterbegin', arrowLeft)
 		// slider
 		let slider = this.generateElement('div', ['slider__content'])
 		this.sliderLink.insertAdjacentElement('beforeend', slider)
 		// right arrow
 		let arrowRight = this.generateElement('div', ['slider__arrow', 'arrow_bg', 'arrow__pos-right', 'rotate-y-180'])
-		arrowRight.addEventListener('click', () => this.handleArrowClick())
+		arrowRight.addEventListener('click', () => this.handleArrowClick('right'))
 		this.sliderLink.insertAdjacentElement('beforeend', arrowRight)
 	}
 

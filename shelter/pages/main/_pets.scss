@@ -57,8 +57,12 @@
             background-color: $color-light-s;
             cursor: pointer;
             border-radius: 9px;
-            transition: 0.1s;
+            transition: 0.4s;
             opacity: 1;
+            /* animation */
+            position: relative;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
 
             &:hover {
               background-color: $color-light-xl;
