@@ -367,8 +367,12 @@
   background-color: #FAFAFA;
   cursor: pointer;
   border-radius: 9px;
-  transition: 0.1s;
+  transition: 0.4s;
   opacity: 1;
+  /* animation */
+  position: relative;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }
 .pets .wrapper .pets__content .pets__slider .slider__content .slider__card:hover {
   background-color: #FFFFFF;
@@ -927,6 +931,22 @@ ul.h-110 {
   opacity: 0 !important;
 }
 
+@keyframes swipe-right {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100vw;
+  }
+}
+@keyframes swipe-left {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100vw;
+  }
+}
 .modal {
   position: fixed;
   top: 0;
@@ -1065,6 +1085,8 @@ ul.h-110 {
   .modal .modal__window .modal__content .list {
     margin-top: -2px;
     row-gap: 6px;
+    padding-bottom: 15px;
+    padding-right: 5px;
   }
 }
 @media (max-width: 767px) {
