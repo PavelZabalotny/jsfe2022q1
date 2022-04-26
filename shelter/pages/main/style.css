@@ -93,11 +93,15 @@
   cursor: pointer;
 }
 .header .wrapper .header__nav-menu {
-  height: 100vh;
   margin-left: auto;
   display: flex;
   align-items: center;
   color: #FAFAFA;
+}
+@media (max-width: 767px) {
+  .header .wrapper .header__nav-menu {
+    height: 100vh;
+  }
 }
 @media (max-width: 767px) {
   .header .wrapper .header__nav-menu {
