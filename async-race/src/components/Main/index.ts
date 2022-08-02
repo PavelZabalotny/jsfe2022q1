@@ -22,7 +22,7 @@ export default class Main implements IObserver {
     mainDOMLink.innerHTML = ''
     const wrapper = createElement({ tagName: 'div', classes: 'wrapper' })
 
-    const container = state.currentPage === 'Garage' ? this.garagePage : this.winnersPage
+    const container = state.currentView === 'Garage' ? this.garagePage : this.winnersPage
     wrapper.append(container)
     mainDOMLink.append(wrapper)
   }

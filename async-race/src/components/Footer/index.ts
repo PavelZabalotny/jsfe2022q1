@@ -1,7 +1,6 @@
 import './_style.scss'
-import { createElement } from '../../common/utils'
+import { createElement, safeQuerySelector } from '../../common/utils'
 import { IComponent } from '../../types'
-import safeQuerySelector from '../../common/utils/safe-query-selector'
 
 export default class Header implements IComponent {
   render() {

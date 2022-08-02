@@ -1,10 +1,9 @@
 import Header from '../components/Header'
 import { IComponent, IObserver, IState, IView } from '../types'
-import { safeQuerySelector } from '../common/utils'
+import { createElement, safeQuerySelector } from '../common/utils'
 import Controller from './Controller'
 import Footer from '../components/Footer'
 import Main from '../components/Main'
-import createElement from '../common/utils/create-element'
 
 export default class View implements IView {
   controller: Controller

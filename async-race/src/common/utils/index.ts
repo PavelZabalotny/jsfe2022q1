@@ -1,4 +1,4 @@
-import safeQuerySelector from './safe-query-selector'
-import createElement from './create-element'
+import safeQuerySelector from './safeQuerySelector'
+import createElement from './createElement'
 
 export { safeQuerySelector, createElement }

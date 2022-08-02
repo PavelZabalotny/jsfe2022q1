@@ -4,6 +4,7 @@
  * @param parent (default - document) - DOM element
  * @return {element} DOM element like HTMLElement
  */
+
 export default function safeQuerySelector<T extends Element>(
   selector: string,
   parent: Pick<Element, 'querySelector'> = document

@@ -7,6 +7,7 @@ export default class Garage {
       classes: 'main__garage',
       text: 'Garage page',
     })
+
     return element
   }
 }

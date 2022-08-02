@@ -1,19 +1,12 @@
 import { IState, IObserver, IModel } from '../types'
+import { initState } from './InitialState'
 
 export default class Model implements IModel {
   public state: IState
   private observers: IObserver[]
 
   constructor() {
-    this.state = {
-      currentPage: 'Garage',
-      forGaragePage: {
-        title: 'Garage',
-      },
-      forWinnersPage: {
-        title: 'Winners',
-      },
-    }
+    this.state = initState
 
     this.observers = []
   }

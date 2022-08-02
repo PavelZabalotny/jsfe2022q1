@@ -1,8 +1,7 @@
 import './_style.scss'
-import { createElement } from '../../common/utils'
+import { createElement, safeQuerySelector } from '../../common/utils'
 import { IObserver, IState } from '../../types'
 import Controller from '../../app/Controller'
-import safeQuerySelector from '../../common/utils/safe-query-selector'
 
 const BUTTONS_TITLE: ('Garage' | 'Winners')[] = ['Garage', 'Winners']
 
@@ -25,7 +24,7 @@ export default class Header implements IObserver {
 
     headerDOMLink.append(wrapper)
 
-    document.title = `Async race - ${state.currentPage}`
+    document.title = `Async race - ${state.currentView}`
   }
 
   createButton(title: 'Garage' | 'Winners') {

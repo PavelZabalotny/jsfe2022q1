@@ -1,11 +1,6 @@
-type newElement = {
-  tagName: string
-  classes?: string | string[]
-  attributes?: { [key: string]: string }
-  text?: string
-}
+import { INewElement } from '../../types'
 
-export default function createElement({ tagName, classes, attributes, text }: newElement) {
+export default function createElement({ tagName, classes, attributes, text }: INewElement) {
   const element = document.createElement(tagName)
 
   if (classes) {
