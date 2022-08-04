@@ -1,4 +1,13 @@
 .main {
+  position: relative;
   flex: 1 0 auto;
   background: rgb(197, 197, 255);
+}
+
+.main__garage,
+.main__winners {
+  position: absolute;
+  top: 20px;
+  width: calc(100% - 20px * 2);
+  transition: 0.3s;
 }

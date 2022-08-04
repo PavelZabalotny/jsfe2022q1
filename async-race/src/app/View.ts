@@ -1,15 +1,19 @@
 import Header from '../components/Header'
-import { IComponent, IObserver, IState, IView } from '../types'
+import { IComponent, IObserver, IView } from '../types'
 import { createElement, safeQuerySelector } from '../common/utils'
 import Controller from './Controller'
 import Footer from '../components/Footer'
 import Main from '../components/Main'
+import Garage from '../components/Pages/Garage'
+import Winners from '../components/Pages/Winners'
 
 export default class View implements IView {
   controller: Controller
   observers: IObserver[]
   bodyContainer: HTMLBodyElement
   header: IObserver
+  garagePage: Garage
+  winnersPage: Winners
   main: IObserver
   footer: IComponent
 
@@ -18,7 +22,9 @@ export default class View implements IView {
     this.observers = []
     this.bodyContainer = safeQuerySelector<HTMLBodyElement>('body')
     this.header = new Header(controller)
-    this.main = new Main(controller)
+    this.garagePage = new Garage(this.controller)
+    this.winnersPage = new Winners(this.controller)
+    this.main = new Main()
     this.footer = new Footer()
   }
 
@@ -29,11 +35,10 @@ export default class View implements IView {
     )
     this.bodyContainer.append(...baseElements)
     this.footer.render()
-    this.controller.model.state.mainDOMLink = safeQuerySelector<HTMLElement>('main')
-    const observers = [this.header, this.main]
+    const observers = [this.header, this.main, this.garagePage, this.winnersPage]
     this.fillWithObservers(observers)
     this.registerObservers()
-    this.controller.model.notifyObservers()
+    this.controller.model.notifyObservers(['All'])
   }
 
   fillWithObservers(observers: IObserver[]) {
@@ -46,7 +51,7 @@ export default class View implements IView {
     })
   }
 
-  updateObservers(state: IState): void {
+  /* updateObservers(state: IState): void {
     if (!this.observers.length) {
       console.log('Nothing to update')
       return
@@ -55,5 +60,5 @@ export default class View implements IView {
     this.observers.forEach((observer) => {
       observer.update(state)
     })
-  }
+  } */
 }

@@ -1,14 +1,21 @@
-import { getCars } from '../common/api'
+import { getCars, getWinners } from '../common/api'
 import { IState } from '../types'
 
-const { items: carsItems, count: carsCount } = await getCars()
+const { items: carItems, page: carPage, count: carCount } = await getCars()
+const { items: winnerItems, page: winnerPage, count: winnerCount } = await getWinners()
 
 export const initState: IState = {
   currentView: 'Garage',
   cars: {
-    items: carsItems,
-    count: carsCount,
-    page: 1,
+    items: carItems,
+    page: carPage,
+    count: carCount,
   },
-  winners: {},
+  winners: {
+    items: winnerItems,
+    page: winnerPage,
+    count: winnerCount,
+    sortBy: 'time',
+    sortOrder: 'ASC',
+  },
 }

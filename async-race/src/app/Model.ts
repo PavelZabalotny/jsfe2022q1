@@ -1,4 +1,4 @@
-import { IState, IObserver, IModel } from '../types'
+import { IState, IObserver, IModel, TTypeNotifyObservers } from '../types'
 import { initState } from './InitialState'
 
 export default class Model implements IModel {
@@ -22,18 +22,14 @@ export default class Model implements IModel {
     this.observers.push(observer)
   }
 
-  notifyObservers() {
+  notifyObservers(type: TTypeNotifyObservers) {
     if (!this.observers.length) {
-      console.log(
-        '🚀 ~ file: Model.ts ~ line 34 ~ Model ~ notifyObservers ~ observers',
-        this.observers
-      )
       console.log('The Model has no Observers to notify!')
       return
     }
 
     this.observers.forEach((observer) => {
-      observer.update(this.state)
+      observer.update(this.state, type)
     })
   }
 }

@@ -1,3 +1,4 @@
+import { IWinnersCar, TSortBy, TSortOrder } from '.'
 import ICar from './ICar'
 
 export default interface IState {
@@ -8,9 +9,10 @@ export default interface IState {
     page: number
   }
   winners: {
-    /* items: ICar[] | []
+    items: (IWinnersCar & ICar)[] | []
     count: number
-    page: number */
+    page: number
+    sortBy: TSortBy
+    sortOrder: TSortOrder
   }
-  mainDOMLink?: HTMLElement
 }

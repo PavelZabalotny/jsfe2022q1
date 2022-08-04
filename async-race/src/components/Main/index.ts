@@ -1,29 +1,21 @@
 import './_style.scss'
 import { createElement, safeQuerySelector } from '../../common/utils'
-import { IObserver, IState } from '../../types'
-import Controller from '../../app/Controller'
-import Garage from '../Pages/Garage'
-import Winners from '../Pages/Winners'
+import { IObserver, IState, TTypeNotifyObservers } from '../../types'
+// import Controller from '../../app/Controller'
 
 export default class Main implements IObserver {
-  controller: Controller
-  garagePage: HTMLElement
-  winnersPage: HTMLElement
+  update(state: IState, type: TTypeNotifyObservers): void {
+    if (type && type.length && !type.includes('All')) {
+      return
+    }
 
-  constructor(controller: Controller) {
-    this.controller = controller
-    this.garagePage = new Garage().render()
-    this.winnersPage = new Winners().render()
-  }
-
-  update(state: IState): void {
     console.log('main updated')
     const mainDOMLink = safeQuerySelector<HTMLElement>('main')
-    mainDOMLink.innerHTML = ''
+    // mainDOMLink.innerHTML = ''
     const wrapper = createElement({ tagName: 'div', classes: 'wrapper' })
 
-    const container = state.currentView === 'Garage' ? this.garagePage : this.winnersPage
-    wrapper.append(container)
+    // state.currentView === 'Garage' ? this.garagePage : this.winnersPage
+    // wrapper.append(this.garagePage, this.winnersPage)
     mainDOMLink.append(wrapper)
   }
 }

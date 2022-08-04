@@ -1,0 +1,22 @@
+.winners__table {
+  display: grid;
+  grid-template-columns: 60px 100px 200px 50px 100px;
+  justify-items: center;
+  align-items: center;
+}
+
+.winners__number,
+.winners__car,
+.winners__name,
+.winners__wins,
+.winners__best-time {
+  font-weight: bold;
+}
+
+.table__name {
+  cursor: pointer;
+
+  &:hover {
+    color: lighten(black, 20%)
+  }
+}

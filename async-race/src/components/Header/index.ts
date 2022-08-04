@@ -1,6 +1,6 @@
 import './_style.scss'
 import { createElement, safeQuerySelector } from '../../common/utils'
-import { IObserver, IState } from '../../types'
+import { IObserver, IState, TTypeNotifyObservers } from '../../types'
 import Controller from '../../app/Controller'
 
 const BUTTONS_TITLE: ('Garage' | 'Winners')[] = ['Garage', 'Winners']
@@ -12,14 +12,18 @@ export default class Header implements IObserver {
     this.controller = controller
   }
 
-  update(state: IState): void {
+  update(state: IState, type: TTypeNotifyObservers): void {
+    if (type && type.length && !type.includes('All') && !type.includes('Header')) {
+      return
+    }
+
     console.log('header updated')
     const headerDOMLink = safeQuerySelector<HTMLElement>('header')
     headerDOMLink.innerHTML = ''
     const wrapper = createElement({ tagName: 'div', classes: 'wrapper' })
 
-    BUTTONS_TITLE.forEach((title) => {
-      wrapper.append(this.createButton(title))
+    BUTTONS_TITLE.forEach((currentView) => {
+      wrapper.append(this.createButton(currentView))
     })
 
     headerDOMLink.append(wrapper)
@@ -27,11 +31,19 @@ export default class Header implements IObserver {
     document.title = `Async race - ${state.currentView}`
   }
 
-  createButton(title: 'Garage' | 'Winners') {
-    const button = createElement({ tagName: 'button', classes: ['btn'], text: `To ${title}` })
+  createButton(currentView: 'Garage' | 'Winners') {
+    const button = createElement({
+      tagName: 'button',
+      classes: ['btn'],
+      text: `To ${currentView}`,
+    })
+
+    if (this.controller.model.state.currentView === currentView) {
+      button.setAttribute('disabled', 'true')
+    }
 
     button.addEventListener('click', (e) => {
-      this.controller.headerButtonClickHandler(e, title)
+      this.controller.headerButtonClickHandler(e, currentView)
     })
 
     return button
