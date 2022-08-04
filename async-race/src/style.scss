@@ -11,15 +11,11 @@ body {
 }
 
 .wrapper {
-  padding: 20px;
+  padding: 10px;
 }
 
-/*.translate-0 {
-  transform: translateX(0);
-}*/
-
-.translate-100 {
-  transform: translateX(100vw);
+.d-none {
+  display: none;
 }
 
 .btn {

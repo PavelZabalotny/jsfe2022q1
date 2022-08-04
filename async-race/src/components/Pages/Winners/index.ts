@@ -32,7 +32,7 @@ export default class Winners implements IObserver {
     }
 
     const winnersClasses =
-      state.currentView === 'Garage' ? ['main__winners', 'translate-100'] : ['main__winners']
+      state.currentView === 'Garage' ? ['main__winners', 'd-none'] : ['main__winners']
 
     const element = createElement({
       tagName: 'div',

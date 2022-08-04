@@ -20,7 +20,7 @@ export default class Controller {
     const headerButtons = [mainGarageDOMLink, mainWinnerDOMLink]
 
     headerButtons.forEach((button) => {
-      button.classList.toggle('translate-100')
+      button.classList.toggle('d-none')
     })
 
     this.model.notifyObservers(['Header'])

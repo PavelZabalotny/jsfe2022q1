@@ -1,0 +1,37 @@
+.car__change {
+  display: flex;
+  gap: 10px;
+}
+
+.car__race {
+  border-bottom: 2px dotted black;
+}
+
+.car__image {
+  display: inline-block;
+}
+
+.car__track {
+  display: flex;
+  align-items: flex-end;
+}
+
+.car__flag {
+  width: 64px;
+  height: 64px;
+  background: url(../../../assets/flag.svg) no-repeat;
+}
+
+.car__flag {
+  margin-left: auto;
+  margin-right: 100px;
+}
+
+.car__drive-buttons {
+  margin-top: 10px;
+  margin-bottom: -25px;
+}
+
+.car {
+  margin-bottom: 10px;
+}
