@@ -16,7 +16,7 @@ export default class Pagination implements IComponent {
     const {
       model: {
         state: {
-          winners: { page, count, sortBy, sortOrder },
+          winners: { page, count },
         },
       },
     } = this.controller
@@ -25,8 +25,7 @@ export default class Pagination implements IComponent {
       page,
       carsCount: count,
       carsPerPage: MAX_CARS_PER_PAGE,
-      sortBy,
-      sortOrder,
+      handleClick: this.controller.handlePaginationClickButton.bind(this.controller),
     })
 
     return pagination

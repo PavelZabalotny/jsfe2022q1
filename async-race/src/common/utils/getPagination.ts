@@ -1,20 +1,12 @@
 import { createElement } from './index'
-import { TSortBy, TSortOrder } from '../../types'
 
 type Pagination = {
   page: number
   carsCount: number
   carsPerPage: number
-  sortBy: TSortBy
-  sortOrder: TSortOrder
+  handleClick: (button: 'Prev' | 'Next') => void
 }
-export default function getPagination({
-  page,
-  carsCount,
-  carsPerPage,
-  sortBy,
-  sortOrder,
-}: Pagination) {
+export default function getPagination({ page, carsCount, carsPerPage, handleClick }: Pagination) {
   const pagination = createElement({ tagName: 'div', classes: 'pagination' })
   const pagesCount = Math.ceil(carsCount / carsPerPage)
 
@@ -25,10 +17,10 @@ export default function getPagination({
       text,
     })
 
-    console.log({ page, carsCount, carsPerPage })
-
     if (text === 'Prev') {
-      // TODO: add Event Listener
+      button.addEventListener('click', () => {
+        handleClick('Prev')
+      })
       if (page === 1) {
         button.setAttribute('disabled', 'true')
       } else {
@@ -37,7 +29,9 @@ export default function getPagination({
     }
 
     if (text === 'Next') {
-      // TODO: add Event Listener
+      button.addEventListener('click', () => {
+        handleClick('Next')
+      })
       if (page === pagesCount) {
         button.setAttribute('disabled', 'true')
       } else {

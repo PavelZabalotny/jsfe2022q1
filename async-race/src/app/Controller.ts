@@ -26,7 +26,7 @@ export default class Controller {
     this.model.notifyObservers(['Header'])
   }
 
-  handleWinnersOrder(e: MouseEvent, sortBy: TSortBy) {
+  handleWinnersOrder(sortBy: TSortBy) {
     this.model.state.winners.sortOrder =
       this.model.state.winners.sortOrder === 'ASC' ? 'DESC' : 'ASC'
 
@@ -36,12 +36,20 @@ export default class Controller {
         this.model.state.winners.count = count
         this.model.state.winners.page = page
         this.model.state.winners.sortBy = sortBy
-
-        console.log(this.model.state.winners)
-        console.log(items)
-
         this.model.notifyObservers(['Winners'])
       }
     )
+  }
+
+  handlePaginationClickButton(button: 'Prev' | 'Next') {
+    const page =
+      button === 'Prev' ? this.model.state.winners.page - 1 : this.model.state.winners.page + 1
+
+    getWinners({ page }).then(({ items, count }) => {
+      this.model.state.winners.items = items
+      this.model.state.winners.count = count
+      this.model.state.winners.page = page
+      this.model.notifyObservers(['Winners'])
+    })
   }
 }

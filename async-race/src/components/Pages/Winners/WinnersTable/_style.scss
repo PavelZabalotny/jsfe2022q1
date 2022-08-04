@@ -1,6 +1,7 @@
 .winners__table {
   display: grid;
   grid-template-columns: 60px 100px 200px 50px 100px;
+  grid-template-rows: 50px repeat(10, 45px);
   justify-items: center;
   align-items: center;
 }

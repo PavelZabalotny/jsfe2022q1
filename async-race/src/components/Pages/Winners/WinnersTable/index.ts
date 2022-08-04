@@ -12,7 +12,7 @@ export default class WinnersTable implements IComponent {
   }
 
   render() {
-    const { items, sortBy, sortOrder } = this.controller.model.state.winners
+    const { items, sortBy, sortOrder, page } = this.controller.model.state.winners
     const tableRowNames = ['Number', 'Car', 'Name', 'Wins', 'Best-time']
 
     const rowNames = tableRowNames.map((text) => {
@@ -23,11 +23,11 @@ export default class WinnersTable implements IComponent {
       })
 
       if (text === 'Best-time') {
-        element.addEventListener('click', (e) => this.controller.handleWinnersOrder(e, 'time'))
+        element.addEventListener('click', () => this.controller.handleWinnersOrder('time'))
       }
 
       if (text === 'Wins') {
-        element.addEventListener('click', (e) => this.controller.handleWinnersOrder(e, 'wins'))
+        element.addEventListener('click', () => this.controller.handleWinnersOrder('wins'))
       }
 
       const sortOrderArrow = sortOrder === 'ASC' ? '&#8595;' : '&#8593;'
@@ -51,11 +51,11 @@ export default class WinnersTable implements IComponent {
     })
 
     const winnersCars = items
-      .map(({ /* id,  */ name, wins, time, color }, index) => {
+      .map(({ name, wins, time, color }, index) => {
         const carNumber = createElement({
           tagName: 'div',
           classes: ['table__cell'],
-          text: `${index + 1}`,
+          text: `${page * 10 - 9 + index}`,
         })
 
         const carImage = createElement({
