@@ -42,14 +42,15 @@ export default class Controller {
   }
 
   handlePaginationClickButton(button: 'Prev' | 'Next') {
-    const page =
-      button === 'Prev' ? this.model.state.winners.page - 1 : this.model.state.winners.page + 1
+    const currentPage =
+      this.model.state.currentView === 'Garage' ? this.model.state.cars : this.model.state.winners
+    const page = button === 'Prev' ? currentPage.page - 1 : currentPage.page + 1
 
     getWinners({ page }).then(({ items, count }) => {
-      this.model.state.winners.items = items
-      this.model.state.winners.count = count
-      this.model.state.winners.page = page
-      this.model.notifyObservers(['Winners'])
+      currentPage.items = items
+      currentPage.count = count
+      currentPage.page = page
+      this.model.notifyObservers([this.model.state.currentView])
     })
   }
 }

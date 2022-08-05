@@ -39,10 +39,10 @@ export default class Winners implements IObserver {
       classes: winnersClasses,
     })
 
-    const pagination = new Pagination(this.controller).render()
+    const winnersPagination = new Pagination(this.controller).render()
 
     const winnersTable = new WinnersTable(this.controller).render()
-    element.append(this.garageInformTitles, winnersTable, pagination)
+    element.append(this.garageInformTitles, winnersTable, winnersPagination)
 
     mainDOMLink.append(element)
   }

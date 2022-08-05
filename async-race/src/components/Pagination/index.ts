@@ -13,10 +13,11 @@ export default class Pagination implements IComponent {
   }
 
   render() {
+    const currentView = this.controller.model.state.currentView === 'Garage' ? 'cars' : 'winners'
     const {
       model: {
         state: {
-          winners: { page, count },
+          [currentView]: { page, count },
         },
       },
     } = this.controller
