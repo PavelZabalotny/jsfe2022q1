@@ -6,6 +6,7 @@ import CarsContainer from '../../CarsContainer'
 import PageInformTitles from '../../PageInformTitles'
 import Pagination from '../../Pagination'
 import CreateCarInput from '../../CreateCarInput'
+import GenerateCars from '../../GenerateCars/GenerateCars'
 
 export default class Garage implements IObserver {
   controller: Controller
@@ -45,9 +46,12 @@ export default class Garage implements IObserver {
 
     const garagePagination = new Pagination('Garage', this.controller).render()
 
+    const generateButton = new GenerateCars(this.controller).render()
+
     element.append(
       createCarInput,
       updateCarInput,
+      generateButton,
       garageInformTitles,
       carsContainer,
       garagePagination

@@ -1,7 +1,15 @@
 import Model from './Model'
-import { safeQuerySelector } from '../common/utils'
+import { getRandomColor, randomFromArray, safeQuerySelector } from '../common/utils'
 import { TSortBy } from '../types'
-import { createCar, deleteCar, deleteWinner, getCars, getWinners, updateCar } from '../common/api'
+import {
+  createCar,
+  deleteCar,
+  deleteWinner,
+  fetchGenerateCar,
+  getCars,
+  getWinners,
+  updateCar,
+} from '../common/api'
 
 export default class Controller {
   public model: Model
@@ -153,5 +161,26 @@ export default class Controller {
 
       this.model.notifyObservers(['Garage', 'Winners'])
     })
+  }
+
+  generateCars(carBrand: string[], carModel: string[]) {
+    const carName = () => `${randomFromArray(carBrand)} ${randomFromArray(carModel)}`
+    const RANDOM_CARS_COUNT = 100
+
+    const carToAdd: Promise<Response>[] = Array(RANDOM_CARS_COUNT)
+      .fill(1)
+      .map(() => fetchGenerateCar(carName(), getRandomColor()))
+
+    Promise.all(carToAdd)
+      .then(() => {
+        console.log('100 cars is generated')
+        getCars().then((cars) => {
+          this.model.state.cars = cars
+          this.model.notifyObservers(['Garage'])
+        })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 }

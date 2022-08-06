@@ -59,6 +59,27 @@ export const createCar = async (name: string, color: string = '#000000'): Promis
   return request.status
 }
 
+export const fetchGenerateCar = async (
+  name: string,
+  color: string = '#000000'
+): Promise<Response> => {
+  const myHeaders = new Headers()
+  myHeaders.append('Content-Type', 'application/json')
+
+  const raw = JSON.stringify({
+    name,
+    color,
+  })
+
+  const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+  }
+
+  return fetch(GARAGE_URL, requestOptions)
+}
+
 export const updateCar = async (
   id: number,
   name: string,
