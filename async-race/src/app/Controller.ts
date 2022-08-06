@@ -1,7 +1,7 @@
 import Model from './Model'
 import { safeQuerySelector } from '../common/utils'
 import { TSortBy } from '../types'
-import { createCar, getCars, getWinners, updateCar } from '../common/api'
+import { createCar, deleteCar, deleteWinner, getCars, getWinners, updateCar } from '../common/api'
 
 export default class Controller {
   public model: Model
@@ -69,13 +69,7 @@ export default class Controller {
 
     if (type === 'create' && name) {
       createCar(name, carColor).then((status: number) => {
-        if (status !== 201) {
-          console.log('error with creating Car')
-        }
-        getCars().then((cars) => {
-          this.model.state.cars = cars
-          this.model.notifyObservers(['Garage'])
-        })
+        this.getCars(status, 201, 'error with creating Car')
       })
     }
 
@@ -105,13 +99,7 @@ export default class Controller {
 
     if (id && carName && carColor) {
       updateCar(+id, carName, carColor).then((status: number) => {
-        if (status !== 200) {
-          console.log('error with updating Car')
-        }
-        getCars().then((cars) => {
-          this.model.state.cars = cars
-          this.model.notifyObservers(['Garage'])
-        })
+        this.getCars(status, 200, 'error with updating Car')
       })
     }
   }
@@ -142,5 +130,28 @@ export default class Controller {
         }
       }
     }
+  }
+
+  handleRemoveCar(id: number) {
+    Promise.allSettled([deleteCar(id), deleteWinner(id)]).then((result) => {
+      if (result[0].status === 'fulfilled') {
+        this.getCars(result[0].value, 200, 'error with deleting Car')
+      }
+    })
+  }
+
+  getCars(statusFromServer: number, neededStatus: number, errorMessage: string) {
+    if (statusFromServer !== neededStatus) {
+      console.log(errorMessage)
+      return
+    }
+    Promise.all([getCars(), getWinners()]).then(([cars, winners]) => {
+      this.model.state.cars = cars
+      this.model.state.winners.items = winners.items
+      this.model.state.winners.page = winners.page
+      this.model.state.winners.count = winners.count
+
+      this.model.notifyObservers(['Garage', 'Winners'])
+    })
   }
 }

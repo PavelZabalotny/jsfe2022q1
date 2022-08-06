@@ -39,6 +39,10 @@ export default class CarWithEnvironment implements IComponent {
       classes: ['bnt', 'btn__remove'],
       text: 'Remove',
     })
+    carRemoveButton.addEventListener('click', () => {
+      this.controller.handleRemoveCar(this.element.id)
+    })
+
     const carName = createElement({ tagName: 'div', classes: 'car__name', text: this.element.name })
 
     carChangeContainer.append(carSelectButton, carRemoveButton, carName)

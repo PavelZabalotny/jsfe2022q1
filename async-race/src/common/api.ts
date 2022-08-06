@@ -83,6 +83,34 @@ export const updateCar = async (
   return request.status
 }
 
+export const deleteCar = async (id: number): Promise<number> => {
+  const myHeaders = new Headers()
+  myHeaders.append('Content-Type', 'application/json')
+
+  const requestOptions = {
+    method: 'DELETE',
+    headers: myHeaders,
+  }
+
+  const request = await fetch(`${GARAGE_URL}/${id}`, requestOptions)
+
+  return request.status
+}
+
+export const deleteWinner = async (id: number): Promise<number> => {
+  const myHeaders = new Headers()
+  myHeaders.append('Content-Type', 'application/json')
+
+  const requestOptions = {
+    method: 'DELETE',
+    headers: myHeaders,
+  }
+
+  const request = await fetch(`${WINNERS_URL}/${id}`, requestOptions)
+
+  return request.status
+}
+
 function getSortOrderQueryParam(sort?: Sort, order?: Order): string {
   if (sort && order) {
     return `&_sort=${sort}&_order=${order}`
