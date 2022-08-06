@@ -7,7 +7,6 @@ export default class Model implements IModel {
 
   constructor() {
     this.state = initState
-
     this.observers = []
   }
 
@@ -29,7 +28,7 @@ export default class Model implements IModel {
     }
 
     this.observers.forEach((observer) => {
-      observer.update(this.state, type)
+      observer.update(type)
     })
   }
 }

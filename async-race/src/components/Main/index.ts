@@ -1,10 +1,10 @@
 import './_style.scss'
 import { createElement, safeQuerySelector } from '../../common/utils'
-import { IObserver, IState, TTypeNotifyObservers } from '../../types'
+import { IObserver, TTypeNotifyObservers } from '../../types'
 // import Controller from '../../app/Controller'
 
 export default class Main implements IObserver {
-  update(state: IState, type: TTypeNotifyObservers): void {
+  update(type: TTypeNotifyObservers): void {
     if (type && type.length && !type.includes('All')) {
       return
     }

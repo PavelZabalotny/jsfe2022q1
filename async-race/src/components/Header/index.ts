@@ -1,6 +1,6 @@
 import './_style.scss'
 import { createElement, safeQuerySelector } from '../../common/utils'
-import { IObserver, IState, TTypeNotifyObservers } from '../../types'
+import { IObserver, TTypeNotifyObservers } from '../../types'
 import Controller from '../../app/Controller'
 
 const BUTTONS_TITLE: ('Garage' | 'Winners')[] = ['Garage', 'Winners']
@@ -12,7 +12,7 @@ export default class Header implements IObserver {
     this.controller = controller
   }
 
-  update(state: IState, type: TTypeNotifyObservers): void {
+  update(type: TTypeNotifyObservers): void {
     if (type && type.length && !type.includes('All') && !type.includes('Header')) {
       return
     }
@@ -28,7 +28,7 @@ export default class Header implements IObserver {
 
     headerDOMLink.append(wrapper)
 
-    document.title = `Async race - ${state.currentView}`
+    document.title = `Async race - ${this.controller.model.state.currentView}`
   }
 
   createButton(currentView: 'Garage' | 'Winners') {

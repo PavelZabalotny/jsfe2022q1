@@ -1,7 +1,7 @@
 import Model from './Model'
 import { safeQuerySelector } from '../common/utils'
 import { TSortBy } from '../types'
-import { getWinners } from '../common/api'
+import { createCar, getCars, getWinners } from '../common/api'
 
 export default class Controller {
   public model: Model
@@ -13,7 +13,6 @@ export default class Controller {
   headerButtonClickHandler(e: MouseEvent, currentView: 'Garage' | 'Winners') {
     e.stopPropagation()
 
-    console.log('controller eventHandle:', currentView)
     this.model.state = { ...this.model.state, currentView }
     const mainGarageDOMLink = safeQuerySelector<HTMLElement>('.main__garage')
     const mainWinnerDOMLink = safeQuerySelector<HTMLElement>('.main__winners')
@@ -41,16 +40,41 @@ export default class Controller {
     )
   }
 
-  handlePaginationClickButton(button: 'Prev' | 'Next') {
+  handlePaginationClickButton(type: 'Garage' | 'Winners', button: 'Prev' | 'Next') {
     const currentPage =
       this.model.state.currentView === 'Garage' ? this.model.state.cars : this.model.state.winners
     const page = button === 'Prev' ? currentPage.page - 1 : currentPage.page + 1
 
-    getWinners({ page }).then(({ items, count }) => {
-      currentPage.items = items
-      currentPage.count = count
-      currentPage.page = page
-      this.model.notifyObservers([this.model.state.currentView])
-    })
+    if (type === 'Garage') {
+      getCars({ page }).then(({ items, count }) => {
+        currentPage.items = items
+        currentPage.count = count
+        currentPage.page = page
+        this.model.notifyObservers([type])
+      })
+    }
+
+    if (type === 'Winners') {
+      getWinners({ page }).then(({ items, count }) => {
+        currentPage.items = items
+        currentPage.count = count
+        currentPage.page = page
+        this.model.notifyObservers([type])
+      })
+    }
+  }
+
+  handleCreateCar(type: 'create' | 'update', carName: string, carColor: string) {
+    if (type === 'create') {
+      createCar(carName, carColor).then((status: number) => {
+        if (status !== 201) {
+          console.log('error with creating Car')
+        }
+        getCars().then((cars) => {
+          this.model.state.cars = cars
+          this.model.notifyObservers(['Garage'])
+        })
+      })
+    }
   }
 }

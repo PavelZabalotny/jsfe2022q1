@@ -12,7 +12,7 @@ export default class CarsContainer implements IComponent {
 
   render(): HTMLElement {
     const carsContainer = createElement({ tagName: 'div', classes: 'main__cars' })
-    // TODO: implement cars items
+
     const cars = this.controller.model.state.cars.items.map((element) =>
       new CarWithEnvironment(element, this.controller).render()
     )

@@ -1,12 +1,20 @@
 import { createElement } from './index'
 
 type Pagination = {
+  type: 'Garage' | 'Winners'
   page: number
   carsCount: number
   carsPerPage: number
-  handleClick: (button: 'Prev' | 'Next') => void
+  handleClick: (type: 'Garage' | 'Winners', button: 'Prev' | 'Next') => void
 }
-export default function getPagination({ page, carsCount, carsPerPage, handleClick }: Pagination) {
+
+export default function getPagination({
+  type,
+  page,
+  carsCount,
+  carsPerPage,
+  handleClick,
+}: Pagination) {
   const pagination = createElement({ tagName: 'div', classes: 'pagination' })
   const pagesCount = Math.ceil(carsCount / carsPerPage)
 
@@ -19,7 +27,7 @@ export default function getPagination({ page, carsCount, carsPerPage, handleClic
 
     if (text === 'Prev') {
       button.addEventListener('click', () => {
-        handleClick('Prev')
+        handleClick(type, 'Prev')
       })
       if (page === 1) {
         button.setAttribute('disabled', 'true')
@@ -30,7 +38,7 @@ export default function getPagination({ page, carsCount, carsPerPage, handleClic
 
     if (text === 'Next') {
       button.addEventListener('click', () => {
-        handleClick('Next')
+        handleClick(type, 'Next')
       })
       if (page === pagesCount) {
         button.setAttribute('disabled', 'true')

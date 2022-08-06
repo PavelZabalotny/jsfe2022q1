@@ -3,17 +3,17 @@ import Controller from '../../app/Controller'
 import { IComponent } from '../../types'
 import { getPagination } from '../../common/utils'
 
-const MAX_CARS_PER_PAGE = 10
-
 export default class Pagination implements IComponent {
+  type: 'Garage' | 'Winners'
   controller: Controller
 
-  constructor(controller: Controller) {
+  constructor(type: 'Garage' | 'Winners', controller: Controller) {
+    this.type = type
     this.controller = controller
   }
 
   render() {
-    const currentView = this.controller.model.state.currentView === 'Garage' ? 'cars' : 'winners'
+    const currentView = this.type === 'Garage' ? 'cars' : 'winners'
     const {
       model: {
         state: {
@@ -22,7 +22,10 @@ export default class Pagination implements IComponent {
       },
     } = this.controller
 
+    const MAX_CARS_PER_PAGE = this.type === 'Garage' ? 7 : 10
+
     const pagination = getPagination({
+      type: this.type,
       page,
       carsCount: count,
       carsPerPage: MAX_CARS_PER_PAGE,

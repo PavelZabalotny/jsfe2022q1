@@ -2,6 +2,7 @@ import { ICar, IWinnersCar } from '../types'
 import { GARAGE_URL, WINNERS_URL } from './urls'
 
 const MAX_CARS_PER_PAGE = 7
+const MAX_WINNERS_PER_PAGE = 10
 
 type getCarsQueryParam = {
   page?: number
@@ -38,6 +39,31 @@ type getWinnersCarQueryParam = {
   order?: Order
 }
 
+export const createCar = async (name: string, color: string = '#000000'): Promise<number> => {
+  const myHeaders = new Headers()
+  myHeaders.append('Content-Type', 'application/json')
+
+  const raw = JSON.stringify({
+    name,
+    color,
+  })
+
+  const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+  }
+
+  /* fetch(GARAGE_URL, requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log('error', error)) */
+
+  const request = await fetch(GARAGE_URL, requestOptions)
+
+  return request.status
+}
+
 function getSortOrderQueryParam(sort?: Sort, order?: Order): string {
   if (sort && order) {
     return `&_sort=${sort}&_order=${order}`
@@ -48,7 +74,7 @@ function getSortOrderQueryParam(sort?: Sort, order?: Order): string {
 
 export async function getWinners({
   page = 1,
-  limit = 10,
+  limit = MAX_WINNERS_PER_PAGE,
   sort = 'time',
   order = 'ASC',
 }: getWinnersCarQueryParam = {}): Promise<{
