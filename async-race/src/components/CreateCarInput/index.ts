@@ -15,8 +15,10 @@ export default class CreateCarInput implements IComponent {
     let carColor: string
     let carName: string
 
-    const container = createElement({ tagName: 'div', classes: 'create-car' })
-    const inputName = createElement({ tagName: 'input', classes: 'create-car__input-name' })
+    const containerClass = this.type === 'create' ? 'create-car' : 'update-car'
+
+    const container = createElement({ tagName: 'div', classes: containerClass })
+    const inputName = createElement({ tagName: 'input', classes: `${containerClass}__input-name` })
     inputName.addEventListener('change', (e) => {
       const target = e.target as HTMLInputElement
       carName = target.value
@@ -24,7 +26,7 @@ export default class CreateCarInput implements IComponent {
 
     const inputColor = createElement({
       tagName: 'input',
-      classes: 'create-car__input-color',
+      classes: `${containerClass}__input-color`,
       attributes: { type: 'color' },
     })
     inputColor.addEventListener('change', (e) => {
@@ -34,12 +36,18 @@ export default class CreateCarInput implements IComponent {
 
     const button = createElement({
       tagName: 'button',
-      classes: 'create-car__button',
+      classes: `${containerClass}__button`,
       text: this.type.toUpperCase(),
     })
     button.addEventListener('click', () => {
       this.controller.handleCreateCar(this.type, carName, carColor)
     })
+
+    if (this.type === 'update') {
+      ;[inputName, inputColor, button].forEach((element) => {
+        element.setAttribute('disabled', 'true')
+      })
+    }
 
     container.append(inputName, inputColor, button)
 

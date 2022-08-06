@@ -14,13 +14,26 @@ export default class CarWithEnvironment implements IComponent {
   }
 
   render() {
-    const car = createElement({ tagName: 'div', classes: 'car' })
+    const car = createElement({
+      tagName: 'div',
+      classes: 'car',
+      attributes: {
+        id: `${this.element.id}`,
+        color: `${this.element.color}`,
+        carName: `${this.element.name}`,
+      },
+    })
     const carChangeContainer = createElement({ tagName: 'div', classes: 'car__change' })
+
     const carSelectButton = createElement({
       tagName: 'button',
       classes: ['bnt', 'btn__select'],
       text: 'Select',
     })
+    carSelectButton.addEventListener('click', (e) => {
+      this.controller.handleSelectCar(e)
+    })
+
     const carRemoveButton = createElement({
       tagName: 'button',
       classes: ['bnt', 'btn__remove'],

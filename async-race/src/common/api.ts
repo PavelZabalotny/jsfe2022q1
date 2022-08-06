@@ -54,12 +54,31 @@ export const createCar = async (name: string, color: string = '#000000'): Promis
     body: raw,
   }
 
-  /* fetch(GARAGE_URL, requestOptions)
-    .then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.log('error', error)) */
-
   const request = await fetch(GARAGE_URL, requestOptions)
+
+  return request.status
+}
+
+export const updateCar = async (
+  id: number,
+  name: string,
+  color: string = '#000000'
+): Promise<number> => {
+  const myHeaders = new Headers()
+  myHeaders.append('Content-Type', 'application/json')
+
+  const raw = JSON.stringify({
+    name,
+    color,
+  })
+
+  const requestOptions = {
+    method: 'PUT',
+    headers: myHeaders,
+    body: raw,
+  }
+
+  const request = await fetch(`${GARAGE_URL}/${id}`, requestOptions)
 
   return request.status
 }

@@ -33,6 +33,7 @@ export default class Garage implements IObserver {
     })
 
     const createCarInput = new CreateCarInput('create', this.controller).render()
+    const updateCarInput = new CreateCarInput('update', this.controller).render()
 
     const garageInformTitles = new PageInformTitles(
       'Garage',
@@ -44,7 +45,13 @@ export default class Garage implements IObserver {
 
     const garagePagination = new Pagination('Garage', this.controller).render()
 
-    element.append(createCarInput, garageInformTitles, carsContainer, garagePagination)
+    element.append(
+      createCarInput,
+      updateCarInput,
+      garageInformTitles,
+      carsContainer,
+      garagePagination
+    )
 
     mainDOMLink.append(element)
   }
