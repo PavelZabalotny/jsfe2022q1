@@ -42,8 +42,8 @@ export default class Header implements IObserver {
       button.setAttribute('disabled', 'true')
     }
 
-    button.addEventListener('click', (e) => {
-      this.controller.headerButtonClickHandler(e, currentView)
+    button.addEventListener('click', () => {
+      this.controller.headerButtonClickHandler(currentView)
     })
 
     return button

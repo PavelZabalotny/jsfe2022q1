@@ -1,5 +1,5 @@
 import Model from './Model'
-import { getRandomColor, randomFromArray, safeQuerySelector } from '../common/utils'
+import { animation, getRandomColor, randomFromArray, safeQuerySelector } from '../common/utils'
 import { TSortBy } from '../types'
 import {
   createCar,
@@ -9,6 +9,8 @@ import {
   getCars,
   getWinners,
   updateCar,
+  startStopEngine,
+  driveEngine,
 } from '../common/api'
 
 export default class Controller {
@@ -18,9 +20,7 @@ export default class Controller {
     this.model = model
   }
 
-  headerButtonClickHandler(e: MouseEvent, currentView: 'Garage' | 'Winners') {
-    e.stopPropagation()
-
+  headerButtonClickHandler(currentView: 'Garage' | 'Winners') {
     this.model.state = { ...this.model.state, currentView }
     const mainGarageDOMLink = safeQuerySelector<HTMLElement>('.main__garage')
     const mainWinnerDOMLink = safeQuerySelector<HTMLElement>('.main__winners')
@@ -183,4 +183,47 @@ export default class Controller {
         console.log(error)
       })
   }
+
+  handleStartCar(
+    carImage: HTMLElement,
+    startButton: HTMLElement,
+    stopButton: HTMLElement,
+    carId: number
+  ) {
+    startButton.setAttribute('disabled', 'true')
+    stopButton.removeAttribute('disabled')
+
+    startStopEngine(carId, 'started').then(({ velocity, distance }) => {
+      const animationTime = distance / velocity
+      const flag = safeQuerySelector<HTMLElement>('.car__flag')
+      const startPoint = carImage.getBoundingClientRect().left
+      const finnishPoint = flag.getBoundingClientRect().right
+      const trackDistance = finnishPoint - startPoint
+
+      animation({
+        carId,
+        carImage,
+        time: animationTime,
+        totalDistance: trackDistance,
+        driveCarCallback: driveEngine,
+      })
+    })
+  }
+
+  handleStopCar(
+    carImage: HTMLElement,
+    startButton: HTMLElement,
+    stopButton: HTMLElement,
+    carId: number
+  ) {
+    startStopEngine(carId, 'stopped').then(() => {
+      carImage.style.transform = `translateX(0)`
+      startButton.removeAttribute('disabled')
+      stopButton.setAttribute('disabled', 'true')
+    })
+  }
+
+  // handleRace(){}
+
+  // handleResetCars(){}
 }

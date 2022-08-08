@@ -23,6 +23,17 @@ export default class CarWithEnvironment implements IComponent {
         carName: `${this.element.name}`,
       },
     })
+
+    const carImage = createElement({
+      tagName: 'div',
+      classes: ['car__image'],
+      text: `${this.element.color}`,
+    })
+    carImage.innerHTML = carSVG(this.element.color)
+    const finnishFlag = createElement({ tagName: 'div', classes: 'car__flag' })
+    const carTrack = createElement({ tagName: 'div', classes: 'car__track' })
+    carTrack.append(carImage, finnishFlag)
+
     const carChangeContainer = createElement({ tagName: 'div', classes: 'car__change' })
 
     const carSelectButton = createElement({
@@ -49,26 +60,29 @@ export default class CarWithEnvironment implements IComponent {
 
     const carRace = createElement({ tagName: 'div', classes: 'car__race' })
     const carDriveButtons = createElement({ tagName: 'div', classes: 'car__drive-buttons' })
+
+    const carStopButton = createElement({
+      tagName: 'button',
+      classes: ['btn', 'car__stop'],
+      text: 'B',
+      attributes: { disabled: 'true' },
+    })
+
     const carStartButton = createElement({
       tagName: 'button',
       classes: ['btn', 'car__start'],
       text: 'A',
     })
-    const carStopButton = createElement({
-      tagName: 'button',
-      classes: ['btn', 'car__stop'],
-      text: 'B',
+    carStartButton.addEventListener('click', (e) => {
+      const target = e.target as HTMLButtonElement
+      this.controller.handleStartCar(carImage, target, carStopButton, this.element.id)
     })
+    carStopButton.addEventListener('click', (e) => {
+      const target = e.target as HTMLButtonElement
+      this.controller.handleStopCar(carImage, carStartButton, target, this.element.id)
+    })
+
     carDriveButtons.append(carStartButton, carStopButton)
-    const carImage = createElement({
-      tagName: 'div',
-      classes: ['car__image'],
-      text: `${this.element.color}`,
-    })
-    carImage.innerHTML = carSVG(this.element.color)
-    const finnishFlag = createElement({ tagName: 'div', classes: 'car__flag' })
-    const carTrack = createElement({ tagName: 'div', classes: 'car__track' })
-    carTrack.append(carImage, finnishFlag)
 
     carRace.append(carDriveButtons, carTrack)
 

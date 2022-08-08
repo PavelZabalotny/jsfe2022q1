@@ -1,5 +1,5 @@
-import { ICar, IWinnersCar } from '../types'
-import { GARAGE_URL, WINNERS_URL } from './urls'
+import { ICar, IWinnersCar, TEngineStatus } from '../types'
+import { ENGINE_URL, GARAGE_URL, WINNERS_URL } from './urls'
 
 const MAX_CARS_PER_PAGE = 7
 const MAX_WINNERS_PER_PAGE = 10
@@ -163,4 +163,34 @@ export async function getWinners({
   const count = +(response.headers.get('X-Total-Count') ?? 0)
 
   return { items, page, count }
+}
+
+export async function startStopEngine(
+  id: number,
+  status: TEngineStatus
+): Promise<{ velocity: number; distance: number }> {
+  const requestOptions = {
+    method: 'PATCH',
+  }
+  const url = `${ENGINE_URL}?id=${id}&status=${status}`
+  const response = await fetch(url, requestOptions)
+
+  return response.json()
+}
+
+export async function driveEngine(carID: number): Promise<boolean> {
+  const requestOptions = {
+    method: 'PATCH',
+  }
+  const engineStatus = 'drive'
+  const url = `${ENGINE_URL}?id=${carID}&status=${engineStatus}`
+
+  return fetch(url, requestOptions)
+    .then((response) => response.json())
+    .then(() => {
+      return true
+    })
+    .catch(() => {
+      return false
+    })
 }

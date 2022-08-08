@@ -11,6 +11,7 @@ import { TSortBy } from './TSortBy'
 import { TSortOrder } from './TSortOrder'
 import IHandleWinnersOrder from './IHandleWinnersOrder'
 import { THandleWinnersOrderCallback } from './THandleWinnersOrderCallback'
+import { TEngineStatus } from './TEngineStatus'
 
 export type {
   IComponent,
@@ -26,4 +27,5 @@ export type {
   TSortOrder,
   IHandleWinnersOrder,
   THandleWinnersOrderCallback,
+  TEngineStatus,
 }
