@@ -225,5 +225,22 @@ export default class Controller {
 
   // handleRace(){}
 
-  // handleResetCars(){}
+  handleResetCars() {
+    this.model.state.cars.items.forEach(({ id }) => {
+      startStopEngine(id, 'stopped').then(() => {
+        const carsImage = document.querySelectorAll<HTMLElement>('.car__image')
+        carsImage.forEach((carImage) => {
+          carImage.style.transform = `translateX(0)`
+        })
+        const startButtons = document.querySelectorAll<HTMLElement>('.car__start')
+        startButtons.forEach((button) => {
+          button.removeAttribute('disabled')
+        })
+        const stopButtons = document.querySelectorAll<HTMLElement>('.car__stop')
+        stopButtons.forEach((button) => {
+          button.setAttribute('disabled', 'true')
+        })
+      })
+    })
+  }
 }
