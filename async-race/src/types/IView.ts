@@ -6,5 +6,4 @@ export default interface IView {
   observers: IObserver[]
   init(): void
   registerObservers(): void
-  // updateObservers(state: IState): void
 }

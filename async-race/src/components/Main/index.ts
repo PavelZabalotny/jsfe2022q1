@@ -1,7 +1,6 @@
 import './_style.scss'
 import { createElement, safeQuerySelector } from '../../common/utils'
 import { IObserver, TTypeNotifyObservers } from '../../types'
-// import Controller from '../../app/Controller'
 
 export default class Main implements IObserver {
   update(type: TTypeNotifyObservers): void {
