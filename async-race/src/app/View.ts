@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import Main from '../components/Main'
 import Garage from '../components/Pages/Garage'
 import Winners from '../components/Pages/Winners'
+import ModalWindow from '../components/ModalWindow'
 
 export default class View implements IView {
   controller: Controller
@@ -16,6 +17,7 @@ export default class View implements IView {
   winnersPage: Winners
   main: IObserver
   footer: IComponent
+  modal: HTMLElement
 
   constructor(controller: Controller) {
     this.controller = controller
@@ -26,6 +28,7 @@ export default class View implements IView {
     this.winnersPage = new Winners(this.controller)
     this.main = new Main()
     this.footer = new Footer()
+    this.modal = new ModalWindow().render()
   }
 
   init() {
@@ -34,6 +37,7 @@ export default class View implements IView {
       createElement({ tagName: elementName, classes: elementName })
     )
     this.bodyContainer.append(...baseElements)
+    this.bodyContainer.insertAdjacentElement('beforeend', this.modal)
     this.footer.render()
     const observers = [this.header, this.main, this.garagePage, this.winnersPage]
     this.fillWithObservers(observers)
@@ -50,15 +54,4 @@ export default class View implements IView {
       this.controller.model.registerObserver(observer)
     })
   }
-
-  /* updateObservers(state: IState): void {
-    if (!this.observers.length) {
-      console.log('Nothing to update')
-      return
-    }
-
-    this.observers.forEach((observer) => {
-      observer.update(state)
-    })
-  } */
 }

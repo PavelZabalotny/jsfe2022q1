@@ -8,6 +8,7 @@ import Pagination from '../../Pagination'
 import CreateCarInput from '../../CreateCarInput'
 import GenerateCars from '../../GenerateCars/GenerateCars'
 import ResetCars from '../../ResetCars'
+import Race from '../../Race'
 
 export default class Garage implements IObserver {
   controller: Controller
@@ -47,6 +48,7 @@ export default class Garage implements IObserver {
 
     const garagePagination = new Pagination('Garage', this.controller).render()
 
+    const raceButton = new Race(this.controller).render()
     const resetButton = new ResetCars(this.controller).render()
     const generateButton = new GenerateCars(this.controller).render()
 
@@ -54,6 +56,7 @@ export default class Garage implements IObserver {
       createCarInput,
       updateCarInput,
       generateButton,
+      raceButton,
       resetButton,
       garageInformTitles,
       carsContainer,

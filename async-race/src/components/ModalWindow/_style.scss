@@ -1,0 +1,15 @@
+.modal {
+  //width: 1000px;
+  //height: 500px;
+  display: none;
+  padding: 20px;
+  font-weight: bold;
+  font-size: 3rem;
+  color: red;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  //border: 2px solid red;
+}

@@ -11,6 +11,9 @@ import {
   updateCar,
   startStopEngine,
   driveEngine,
+  getWinner,
+  createWinner,
+  updateWinner,
 } from '../common/api'
 
 export default class Controller {
@@ -223,9 +226,94 @@ export default class Controller {
     })
   }
 
-  // handleRace(){}
+  async handleRace(raceButton: HTMLElement) {
+    raceButton.setAttribute('disabled', 'true')
 
-  handleResetCars() {
+    const carsId = this.model.state.cars.items.map((item) => item.id)
+    const carEnableEnginePromises = carsId.map(async (carId) => {
+      const car = document.getElementById(String(carId))
+
+      if (!car) {
+        throw new Error(`Car ${carId} not found`)
+      }
+
+      const carImage = safeQuerySelector<HTMLElement>('.car__image', car)
+
+      const flag = safeQuerySelector<HTMLElement>('.car__flag')
+      const startPoint = carImage.getBoundingClientRect().left
+      const finnishPoint = flag.getBoundingClientRect().right
+      const trackDistance = finnishPoint - startPoint
+
+      const { velocity, distance } = await startStopEngine(carId, 'started')
+      const carTime = distance / velocity
+      return {
+        carId,
+        carImage,
+        carTime,
+        trackDistance,
+      }
+    })
+    const carsSettings = await Promise.all(carEnableEnginePromises)
+    console.log('carsArray', carsSettings)
+
+    const carsAnimation = carsSettings.map(({ carId, carImage, carTime, trackDistance }) =>
+      animation({
+        carId,
+        carImage,
+        time: carTime,
+        totalDistance: trackDistance,
+        driveCarCallback: driveEngine,
+      })
+    )
+
+    const fasterCar = await Promise.any(carsAnimation)
+
+    const resetButton = safeQuerySelector<HTMLElement>('.reset-button')
+    console.log(resetButton)
+    resetButton.removeAttribute('disabled')
+    console.log('faster car - ', fasterCar)
+    const modalDOMLink = safeQuerySelector<HTMLElement>('.modal')
+    modalDOMLink.style.display = 'block'
+    const bestTime = (fasterCar.time / 1000).toFixed(2)
+    const winnerText = `Car #${fasterCar.carId} is won with best time = ${bestTime}s`
+    modalDOMLink.textContent = winnerText
+    setTimeout(() => {
+      modalDOMLink.style.display = 'none'
+    }, 5_000)
+
+    const hasWinner = await getWinner(fasterCar.carId)
+    console.log('winner - ', hasWinner)
+    let createdWinner: number
+    if (!Object.keys(hasWinner).length) {
+      createdWinner = await createWinner({ id: fasterCar.carId, time: Number(bestTime), wins: 1 })
+    } else {
+      const fasterCarTimeSecond = +(fasterCar.time / 1000).toFixed(2)
+      const time = hasWinner.time >= fasterCarTimeSecond ? fasterCarTimeSecond : hasWinner.time
+      console.log({ hasWinner, fasterCarTimeSecond })
+      const wins = hasWinner.wins + 1
+      createdWinner = await updateWinner({ id: fasterCar.carId, time, wins })
+    }
+    console.log('createdWinner - ', createdWinner)
+
+    const startButtons = document.querySelectorAll<HTMLElement>('.car__start')
+    startButtons.forEach((button) => {
+      button.setAttribute('disabled', 'true')
+    })
+    const stopButtons = document.querySelectorAll<HTMLElement>('.car__stop')
+    stopButtons.forEach((button) => {
+      button.removeAttribute('disabled')
+    })
+
+    const winners = await getWinners()
+    this.model.state.winners.items = winners.items
+    this.model.state.winners.count = winners.count
+    this.model.notifyObservers(['Winners'])
+  }
+
+  handleResetCars(resetButton: HTMLButtonElement) {
+    resetButton.setAttribute('disabled', 'true')
+    const modalDOMLink = safeQuerySelector<HTMLElement>('.modal')
+    modalDOMLink.style.display = 'none'
     this.model.state.cars.items.forEach(({ id }) => {
       startStopEngine(id, 'stopped').then(() => {
         const carsImage = document.querySelectorAll<HTMLElement>('.car__image')
@@ -240,6 +328,8 @@ export default class Controller {
         stopButtons.forEach((button) => {
           button.setAttribute('disabled', 'true')
         })
+        const raceButton = safeQuerySelector('.race-button')
+        raceButton.removeAttribute('disabled')
       })
     })
   }

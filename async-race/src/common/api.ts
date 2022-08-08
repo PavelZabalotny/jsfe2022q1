@@ -165,6 +165,9 @@ export async function getWinners({
   return { items, page, count }
 }
 
+export const getWinner = async (id: number): Promise<IWinnersCar> =>
+  (await fetch(`${WINNERS_URL}/${id}`)).json()
+
 export async function startStopEngine(
   id: number,
   status: TEngineStatus
@@ -176,6 +179,47 @@ export async function startStopEngine(
   const response = await fetch(url, requestOptions)
 
   return response.json()
+}
+
+export const createWinner = async ({ id, time, wins }: IWinnersCar): Promise<number> => {
+  const myHeaders = new Headers()
+  myHeaders.append('Content-Type', 'application/json')
+
+  const raw = JSON.stringify({
+    id,
+    time,
+    wins,
+  })
+
+  const requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+  }
+
+  const request = await fetch(WINNERS_URL, requestOptions)
+
+  return request.status
+}
+
+export const updateWinner = async ({ id, time, wins }: IWinnersCar): Promise<number> => {
+  const myHeaders = new Headers()
+  myHeaders.append('Content-Type', 'application/json')
+
+  const raw = JSON.stringify({
+    time,
+    wins,
+  })
+
+  const requestOptions = {
+    method: 'PUT',
+    headers: myHeaders,
+    body: raw,
+  }
+
+  const request = await fetch(`${WINNERS_URL}/${id}`, requestOptions)
+
+  return request.status
 }
 
 export async function driveEngine(carID: number): Promise<boolean> {

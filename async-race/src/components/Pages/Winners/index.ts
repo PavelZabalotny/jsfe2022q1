@@ -8,15 +8,9 @@ import Pagination from '../../Pagination'
 
 export default class Winners implements IObserver {
   controller: Controller
-  garageInformTitles: HTMLElement
 
   constructor(controller: Controller) {
     this.controller = controller
-    this.garageInformTitles = new PageInformTitles(
-      'Winners',
-      controller.model.state.winners.count,
-      controller.model.state.winners.page
-    ).render()
   }
 
   update(type: TTypeNotifyObservers) {
@@ -41,10 +35,15 @@ export default class Winners implements IObserver {
       classes: winnersClasses,
     })
 
+    const garageInformTitles = new PageInformTitles(
+      'Winners',
+      this.controller.model.state.winners.count,
+      this.controller.model.state.winners.page
+    ).render()
     const winnersPagination = new Pagination('Winners', this.controller).render()
 
     const winnersTable = new WinnersTable(this.controller).render()
-    element.append(this.garageInformTitles, winnersTable, winnersPagination)
+    element.append(garageInformTitles, winnersTable, winnersPagination)
 
     mainDOMLink.append(element)
   }
