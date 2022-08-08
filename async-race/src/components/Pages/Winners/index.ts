@@ -17,7 +17,6 @@ export default class Winners implements IObserver {
     if (type && type.length && !type.includes('All') && !type.includes('Winners')) {
       return
     }
-    console.log('Winners updated')
     const mainDOMLink = safeQuerySelector<HTMLElement>('.main .wrapper')
     const mainWinners: HTMLElement | null = mainDOMLink.querySelector('.main__winners')
 

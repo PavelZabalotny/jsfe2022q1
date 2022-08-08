@@ -17,7 +17,6 @@ export default class Header implements IObserver {
       return
     }
 
-    console.log('header updated')
     const headerDOMLink = safeQuerySelector<HTMLElement>('header')
     headerDOMLink.innerHTML = ''
     const wrapper = createElement({ tagName: 'div', classes: 'wrapper' })

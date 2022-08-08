@@ -21,7 +21,6 @@ export default class Garage implements IObserver {
     if (type && type.length && !type.includes('All') && !type.includes('Garage')) {
       return
     }
-    console.log('Garage updated')
     const mainDOMLink = safeQuerySelector<HTMLElement>('.main .wrapper')
 
     const mainGarage: HTMLElement | null = mainDOMLink.querySelector('.main__garage')

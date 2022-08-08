@@ -44,7 +44,7 @@ export default class WinnersTable implements IComponent {
           }
           break
         default:
-          console.log('Sort condition not found in switch')
+          throw new Error('Sort condition not found in switch')
       }
 
       return element

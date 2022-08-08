@@ -153,8 +153,7 @@ export default class Controller {
 
   getCars(statusFromServer: number, neededStatus: number, errorMessage: string) {
     if (statusFromServer !== neededStatus) {
-      console.log(errorMessage)
-      return
+      throw new Error(errorMessage)
     }
     Promise.all([getCars(), getWinners()]).then(([cars, winners]) => {
       this.model.state.cars = cars
@@ -176,7 +175,6 @@ export default class Controller {
 
     Promise.all(carToAdd)
       .then(() => {
-        console.log('100 cars is generated')
         getCars().then((cars) => {
           this.model.state.cars = cars
           this.model.notifyObservers(['Garage'])
@@ -254,7 +252,6 @@ export default class Controller {
       }
     })
     const carsSettings = await Promise.all(carEnableEnginePromises)
-    console.log('carsArray', carsSettings)
 
     const carsAnimation = carsSettings.map(({ carId, carImage, carTime, trackDistance }) =>
       animation({
@@ -269,9 +266,7 @@ export default class Controller {
     const fasterCar = await Promise.any(carsAnimation)
 
     const resetButton = safeQuerySelector<HTMLElement>('.reset-button')
-    console.log(resetButton)
     resetButton.removeAttribute('disabled')
-    console.log('faster car - ', fasterCar)
     const modalDOMLink = safeQuerySelector<HTMLElement>('.modal')
     modalDOMLink.style.display = 'block'
     const bestTime = (fasterCar.time / 1000).toFixed(2)
@@ -279,21 +274,18 @@ export default class Controller {
     modalDOMLink.textContent = winnerText
     setTimeout(() => {
       modalDOMLink.style.display = 'none'
-    }, 5_000)
+    }, 10_000)
 
     const hasWinner = await getWinner(fasterCar.carId)
-    console.log('winner - ', hasWinner)
-    let createdWinner: number
+
     if (!Object.keys(hasWinner).length) {
-      createdWinner = await createWinner({ id: fasterCar.carId, time: Number(bestTime), wins: 1 })
+      await createWinner({ id: fasterCar.carId, time: Number(bestTime), wins: 1 })
     } else {
       const fasterCarTimeSecond = +(fasterCar.time / 1000).toFixed(2)
       const time = hasWinner.time >= fasterCarTimeSecond ? fasterCarTimeSecond : hasWinner.time
-      console.log({ hasWinner, fasterCarTimeSecond })
       const wins = hasWinner.wins + 1
-      createdWinner = await updateWinner({ id: fasterCar.carId, time, wins })
+      await updateWinner({ id: fasterCar.carId, time, wins })
     }
-    console.log('createdWinner - ', createdWinner)
 
     const startButtons = document.querySelectorAll<HTMLElement>('.car__start')
     startButtons.forEach((button) => {

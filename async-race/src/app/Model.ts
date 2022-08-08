@@ -13,18 +13,15 @@ export default class Model implements IModel {
   registerObserver(observer: IObserver) {
     const isExist = this.observers.includes(observer)
     if (isExist) {
-      console.log('Observer already exist!')
-      return
+      throw new Error('Observer already exist!')
     }
 
-    console.log('Observer is attached:', observer)
     this.observers.push(observer)
   }
 
   notifyObservers(type: TTypeNotifyObservers) {
     if (!this.observers.length) {
-      console.log('The Model has no Observers to notify!')
-      return
+      throw new Error('The Model has no Observers to notify!')
     }
 
     this.observers.forEach((observer) => {
