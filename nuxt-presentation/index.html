@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!--  <link rel="icon" type="image/svg+xml" href="favicon.svg" />-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="./assets/favicon.5171eb0a.svg" type=" image/svg+xml">
+  
+  <title>Nuxt presentation</title>
+  <script type="module" crossorigin src="./assets/index.312e870b.js"></script>
+  <link rel="stylesheet" href="./assets/index.5c34f3f8.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <section>
+      <h2>What is <a href="https://v3.nuxtjs.org/">NuxtJs?</a></h2>
+      <p class="fragment fade-right"><i>Nuxt</i> is a progressive framework based on Vue.js to create modern web
+        applications</p>
+      <p class="fragment fade-up">
+        <img src="./assets/nuxt.fe9fc2ea.png" alt="nuxt">
+      </p>
+
+      <aside class="notes">
+        <i>*Nuxt's</i> goal is to make web development intuitive and performant with a great developer experience in
+        mind
+      </aside>
+    </section>
+
+    <section>
+      <h3>Why Nuxt?</h3>
+      <ol>
+        <li class="fragment fade-down">JavaScript framework - <b><i>Vue.js</i></b></li>
+        <li class="fragment fade-left">Bundler - <b><i>webpack 5</i></b> or <b><i>Vite</i></b></li>
+        <li class="fragment fade-right">Transpiler - <b><i>esbuild</i></b></li>
+        <li class="fragment">Server - <b><i>h3</i></b></li>
+        <li class="fragment fade-up">Routing library - <b><i>vue-router</i></b></li>
+      </ol>
+
+      <aside class="notes">
+        To understand what Nuxt is, we need to understand what we need to create a modern application
+        <br>*1) JavaScript framework to bring reactivity and web components, Nuxt works in Vue.js
+        <br>*2) Bundler to support hot module replacement in development and bundle your code for production, Nuxt
+        support
+        both webpack 5 and Vite
+        <br>*3) Transpiler to write the latest JavaScript syntax while supporting legacy browsers, Nuxt use esbuild for
+        that
+        <br>*4) Server for serving your application in development, but also to support server-side rendering or API
+        routes,
+        Nuxt uses h3 for deployment
+        <br>*5) Routing library to handle client-side navigation, Nuxt chose vue-router
+      </aside>
+    </section>
+
+    <section>
+      <h3>Nuxt directory</h3>
+      <p class="fragment"><i>Nuxt</i> uses the <b><i>.nuxt/</i></b> directory in development to generate your Vue
+        application
+      </p>
+
+      <aside class="notes">
+        *Nuxt provides a directory structure to follow, focused on specific features to keep your focus on creating, not
+        configuring
+      </aside>
+    </section>
+
+    <section>
+      <h3>How does it work?</h3>
+      <ol>
+        <li class="fragment fade-down">Core Engine: <b><i>nuxt</i></b></li>
+        <li class="fragment fade-right">Bundlers: <b><i>@nuxt/vite-builder</i></b> and
+          <b><i>@nuxt/webpack-builder</i></b></li>
+        <li class="fragment fade-left">Command line interface: <b><i>nuxi</i></b></li>
+        <li class="fragment fade-right">Server engine: <b><i>nitro</i></b></li>
+        <li class="fragment fade-left">Development kit: <b><i>@nuxt/kit</i></b></li>
+        <li class="fragment fade-up">Nuxt 2 Bridge: <b><i>@nuxt/bridge</i></b></li>
+      </ol>
+
+      <aside class="notes">
+        *Nuxt is composed of different core packages.
+      </aside>
+    </section>
+
+    <section>
+      <h3>Are you Nuxt?</h3>
+      <p class="fragment fade-down"><i>Nuxt</i> is the backbone of your Vue.js project, giving structure to build your
+        project
+        with confidence while keeping flexibility</p>
+
+      <aside class="notes">
+        *Extendable with a strong module ecosystem and hooks engine, it makes it easy to connect your REST or GraphQL
+        endpoints, favorite CMS, CSS frameworks and more. PWA and AMP support is only a module away from your Nuxt
+        project.
+      </aside>
+    </section>
+
+    <section>
+      <h3>Vue.js Development</h3>
+      <p class="fragment fade-left"><i>Nuxt</i> uses Vue as a frontend framework and adds features such as component
+        auto-imports and file-based routing</p>
+    </section>
+
+    <section>
+      <h3>Components auto-imports</h3>
+      <p class="fragment">Every Vue component created in the <b><i>components/</i></b> directory of a <i>Nuxt</i>
+        project will
+        be available in your project without having to import it. If a component is not used anywhere, your production’s
+        code will not include it</p>
+    </section>
+
+    <section>
+      <h3>Vue Router</h3>
+      <p class="fragment">Most applications need multiple pages and a way to navigate between them. This is called
+        routing. <i>Nuxt</i> uses a <b><i>pages/</i></b> directory and naming conventions to directly create routes
+        mapped to
+        your files
+        using the official Vue Router library</p>
+    </section>
+
+    <section>
+      <h3>Developers chose to build Nuxt on top of Vue for these reasons:</h3>
+      <ol class="font-size-34">
+        <li class="fragment fade-left">The reactivity model of Vue, where a change in data automatically triggers a
+          change in the
+          interface
+        </li>
+        <li class="fragment fade-right">The component-based templating, while keeping HTML as the common language of the
+          web,
+          enables intuitive patterns to keep your interface consistent, yet powerful
+        </li>
+        <li class="fragment fade-up">From small projects to large web applications, Vue keeps performing well at scale
+          to ensure
+          that your application keeps delivering value to your users
+        </li>
+      </ol>
+    </section>
+
+    <section>
+      <h3>Rendering Modes:</h3>
+      <ul>
+        <li class="fragment fade-left">client-side</li>
+        <li class="fragment fade-right">universal</li>
+      </ul>
+
+      <aside class="notes">Both the browser and server can interpret JavaScript code to render Vue.js components into
+        HTML elements. This step is called rendering. Nuxt supports both *client-side and *universal rendering.
+      </aside>
+    </section>
+
+    <section>
+      <h3>Client-side only rendering</h3>
+      <p class="fragment fade-up">
+        <img src="./assets/client-side-rendering.a1fb1a89.svg" alt="client-side rendering">
+      </p>
+
+      <aside class="notes">Out of the box, a traditional Vue.js application is rendered in the browser (or client).
+        Then, Vue.js generates HTML elements after the browser downloads and parses all the JavaScript code containing
+        the instructions to create the current interface.
+      </aside>
+    </section>
+
+    <section>
+      <h3>Universal Rendering</h3>
+      <p class="fragment fade-up">
+        <img src="./assets/universal-rendering.7db0a5cb.svg" alt="universal rendering">
+      </p>
+
+      <aside class="notes">
+        When the browser requests a URL with universal (client-side + server-side) rendering enabled, the server returns
+        a fully rendered HTML page to the browser. Whether the page has been generated in advance and cached or is
+        rendered on the fly, at some point, Nuxt has run the JavaScript (Vue.js) code in a server environment, producing
+        an HTML document. Users immediately get the content of our application, contrary to client-side rendering. This
+        step is similar to traditional server-side rendering performed by PHP or Ruby applications.
+        <br>To not lose the benefits of the client-side rendering method, such as dynamic interfaces and pages
+        transitions,
+        the Client loads the javascript code that runs on the Server in the background once the HTML document has been
+        downloaded. The browser interprets it again (hence Universal rendering) and Vue.js takes control of the document
+        and enables interactivity.
+        <br>Making a static page interactive in the browser is called "Hydration."
+        <br>Universal rendering allows a Nuxt application to provide quick page load times while preserving the benefits
+        of
+        client-side rendering. Furthermore, as the content is already present in the HTML document, crawlers can index
+        it without overhead.
+      </aside>
+    </section>
+
+    <section>
+      <h3>Coming in Nuxt 3</h3>
+      <ul>
+        <li class="fragment fade-left">Hybrid Rendering</li>
+        <li class="fragment fade-right">Rendering on CDN edge workers</li>
+      </ul>
+
+      <aside class="notes">
+        In most cases, universal rendering as performed in Nuxt 2 offers a good user and developer experience. However,
+        Nuxt 3 takes universal rendering a step further by introducing *hybrid rendering and edge-side rendering.
+        <br>Hybrid rendering allows different caching rules per route and decides how the Server should respond to a new
+        request on a given URL.
+        <br>At the moment, every page (or route) of a Nuxt application must use the same rendering mode, client-side or
+        universal. But in various cases, some pages could be generated at build time, while others should be client-side
+        rendered. For example, think of a content website with an admin section. Every content page should be primarily
+        static and generated once, but the admin section requires registration and behaves more like a dynamic
+        application.
+        <br>Traditionally, server-side and universal rendering was only possible using Node.js. Nuxt 3 takes it to
+        another
+        level by directly rendering code in *CDN edge workers, reducing latency and costs.
+        <br>Nitro is the new server engine that powers Nuxt 3. It offers cross-platform support for Node.js, Deno,
+        Workers,
+        and more. Nitro's design is platform-agnostic and allows rendering a Nuxt application at the edge, closer to
+        your users, allowing replication and further optimizations.
+      </aside>
+    </section>
+
+    <section>
+      <h3>TypeScript</h3>
+      <p class="fragment"><i>Nuxt</i> 3 is fully typed and provides helpful shortcuts to ensure you have access to
+        accurate
+        type information when you are coding</p>
+    </section>
+
+    <section>
+      <h4>Thank you for your attention!</h4>
+    </section>
+
+  </div>
+</div>
+</body>
+</html>
